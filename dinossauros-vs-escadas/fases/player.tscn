@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dcldth85u2s0e"]
+
+[ext_resource type="Script" uid="uid://cfv7vajpdtwbg" path="res://componentes/Scripts Principais/player.gd" id="1_g2cty"]
+[ext_resource type="Texture2D" uid="uid://cahmwbmogavar" path="res://assets/Blitz/IdleBlitz.png" id="2_sux7i"]
+[ext_resource type="Script" uid="uid://c3cudtcrxycnb" path="res://componentes/Scripts Principais/inimigo.gd" id="3_0k1xm"]
+[ext_resource type="Texture2D" uid="uid://dli1xnynbvpvm" path="res://icon.svg" id="3_sux7i"]
+[ext_resource type="Texture2D" uid="uid://byu33wy7ijtkw" path="res://assets/inimigos/infernais/IdleDiabrete.png" id="4_oa07v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnmh4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x55jb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upvks"]
+
+[node name="Node2D" type="Node2D" unique_id=692552549]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1647666127 groups=["player"]]
+position = Vector2(97, 504)
+script = ExtResource("1_g2cty")
+velocidade = 400.0
+dano = 6.0
+metadata/_custom_type_script = "uid://cfv7vajpdtwbg"
+
+[node name="SpriteBlitz" type="Sprite2D" parent="Player" unique_id=317599540]
+texture_filter = 1
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_sux7i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1379433155]
+scale = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_cnmh4")
+
+[node name="Arranhar" type="Area2D" parent="Player" unique_id=1940639939]
+position = Vector2(80, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Arranhar" unique_id=335805230]
+scale = Vector2(5, 7)
+shape = SubResource("RectangleShape2D_x55jb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/Arranhar" unique_id=1315653180]
+texture = ExtResource("3_sux7i")
+
+[node name="Mordida" type="Area2D" parent="Player" unique_id=611406847]
+position = Vector2(80, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Mordida" unique_id=1931095382]
+scale = Vector2(7, 5)
+shape = SubResource("RectangleShape2D_x55jb")
+
+[node name="Inimigo" type="CharacterBody2D" parent="." unique_id=1818564196]
+position = Vector2(1020, 507)
+script = ExtResource("3_0k1xm")
+vida_maxima = 20.0
+velocidade = 100.0
+dano = 1.0
+metadata/_custom_type_script = "uid://c3cudtcrxycnb"
+
+[node name="Sprite2D" type="Sprite2D" parent="Inimigo" unique_id=842018952]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_oa07v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Inimigo" unique_id=1976423789]
+position = Vector2(1, -1)
+scale = Vector2(2.909, 4)
+shape = SubResource("RectangleShape2D_upvks")
