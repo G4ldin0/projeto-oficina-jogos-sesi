@@ -3,10 +3,13 @@ extends Entidade
 
 func _ready() -> void:
 	super._ready()
-	
+
+
 var direcaoAtual = Vector2.RIGHT
 var posAtual = Vector2(80,0)
 var rotaAtual = 0
+
+
 func _physics_process(_delta: float) -> void:
 	var direcao = Input.get_vector("Esquerda", "Direita", "Cima", "Baixo") #procura o input para cada vetor
 	
@@ -46,20 +49,45 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("MordidaAtk"):
 		mordida()
 
-func arranhar() -> void:
-	var corposNaArea = $Arranhar.get_overlapping_bodies() #Procura corpos que estão sobrepondo a colisão do arranhar
-	var danoArranhar = dano * 0.5 #Feito para futuros cálculos de dano
-	
-	for corpo in corposNaArea: # 'para cada corpo na variável corposNaArea, faz o seguinte'
-		if corpo is Inimigo: # procura se o corpo é um inimigo, classe do inimigo
-			corpo.receber_dano(danoArranhar) #Puxa a função do inimigo receber_dano
-			print("Inimigo atingido por arranhão!, Dano Entregue:", danoArranhar)
+var podeArranhar = true
+var podeMorder = true
+var arranharKnockback = 200
+var mordidaKnockback = 500
+var cooldownArranhar = 0.5
+var cooldownMordida = 1.2
 
-func mordida() -> void: # É basicamente replicado do arranhar.
-	var corposNaArea = $Mordida.get_overlapping_bodies()
-	var danoMordida = dano
+func arranhar() -> void: #Ambos utilizam uma função do jogador com esses parâmetros
+	realizar_ataque("Arranhar", $Arranhar, dano * 0.5, arranharKnockback, cooldownArranhar)
+
+func mordida() -> void:
+	realizar_ataque("Mordida", $Mordida, dano, mordidaKnockback, cooldownMordida)
+
+var ataquesDisponiveis = {
+	"Arranhar" = true,
+	"Mordida" = true
+}
+
+func realizar_ataque(nome, area, dano_ataque:float, knockback:float, cooldown:float) -> void:
+	if not ataquesDisponiveis[nome]:
+		return
+	ataquesDisponiveis[nome] = false
+	
+	var corposNaArea = area.get_overlapping_bodies()
 	
 	for corpo in corposNaArea:
 		if corpo is Inimigo:
-			corpo.receber_dano(danoMordida)
-			print("Inimigo atingido por mordida!, Dano Entregue:", danoMordida)
+			var direcao = global_position.direction_to(corpo.global_position)
+			corpo.knockback(direcao, knockback)
+			corpo.receber_dano(dano_ataque)
+			print("Inimigo atingido por ", nome, " , Dano Entregue:", dano_ataque)
+	await get_tree().create_timer(cooldown).timeout
+	ataquesDisponiveis[nome] = true
+
+func receber_dano(valor: float) -> void:
+	super.receber_dano(valor)
+	
+	if vida <= 0:
+		morrer()
+
+func morrer() -> void:
+	get_tree().reload_current_scene()
