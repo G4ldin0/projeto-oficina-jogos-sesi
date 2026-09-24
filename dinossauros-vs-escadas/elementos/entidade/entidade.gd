@@ -1,6 +1,8 @@
 class_name Entidade
 extends CharacterBody2D
 
+signal morreu
+
 @export var vida_maxima: float = 100
 @export var velocidade: float = 200
 @export var dano: float = 10

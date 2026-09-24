@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dcldth85u2s0e"]
 
-[ext_resource type="PackedScene" uid="uid://bsn76nwnc17tl" path="res://elementos/entidade/jogador.tscn" id="1_13ocd"]
-[ext_resource type="PackedScene" uid="uid://ud70jedfkl8j" path="res://elementos/entidade/inimigo.tscn" id="2_ru308"]
+[ext_resource type="PackedScene" uid="uid://bsn76nwnc17tl" path="res://elementos/entidade/jogador.tscn" id="1_ht5g6"]
+[ext_resource type="PackedScene" uid="uid://ud70jedfkl8j" path="res://elementos/entidade/inimigo.tscn" id="2_tw7gb"]
 
-[node name="Node2D" type="Node2D" unique_id=692552549]
+[node name="CenaTeste" type="Node2D" unique_id=692552549]
 
-[node name="Jogador" parent="." unique_id=1641892574 instance=ExtResource("1_13ocd")]
+[node name="Jogador" parent="." unique_id=1641892574 instance=ExtResource("1_ht5g6")]
 position = Vector2(97, 504)
 
-[node name="Inimigo" parent="." unique_id=1637859449 instance=ExtResource("2_ru308")]
+[node name="Inimigo" parent="." unique_id=1637859449 instance=ExtResource("2_tw7gb")]
 position = Vector2(1020, 507)

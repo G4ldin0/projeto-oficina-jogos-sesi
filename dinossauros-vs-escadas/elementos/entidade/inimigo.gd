@@ -70,6 +70,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func morrer() -> void:
+	morreu.emit()
 	queue_free()
 	
 
