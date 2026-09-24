@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://calu2ujiptsmi"
-path="res://.godot/imported/ArranharSprite.png-aa3461d4dd4fd0df1fe778f5c7f4b29e.ctex"
+uid="uid://byu33wy7ijtkw"
+path="res://.godot/imported/IdleDiabrete.png-209a8fabedbfb552b9295b774974287f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Blitz/Sprites De Ataques/ArranharSprite.png"
-dest_files=["res://.godot/imported/ArranharSprite.png-aa3461d4dd4fd0df1fe778f5c7f4b29e.ctex"]
+source_file="res://assets/sprites/inimigos/infernais/IdleDiabrete.png"
+dest_files=["res://.godot/imported/IdleDiabrete.png-209a8fabedbfb552b9295b774974287f.ctex"]
 
 [params]
 

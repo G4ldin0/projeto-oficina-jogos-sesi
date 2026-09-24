@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bsn76nwnc17tl"]
+
+[ext_resource type="Script" uid="uid://cfv7vajpdtwbg" path="res://elementos/entidade/player.gd" id="1_r7hdx"]
+[ext_resource type="Texture2D" uid="uid://cahmwbmogavar" path="res://assets/sprites/Blitz/IdleBlitz.png" id="2_7x66v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnmh4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x55jb"]
+
+[node name="Jogador" type="CharacterBody2D" unique_id=1641892574 node_paths=PackedStringArray("sprite") groups=["player"]]
+script = ExtResource("1_r7hdx")
+vida_maxima = 5.0
+velocidade = 400.0
+dano = 6.0
+sprite = NodePath("SpriteBlitz")
+metadata/_custom_type_script = "uid://cfv7vajpdtwbg"
+
+[node name="SpriteBlitz" type="Sprite2D" parent="." unique_id=1888630440]
+texture_filter = 1
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_7x66v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1738837075]
+scale = Vector2(6, 4)
+shape = SubResource("RectangleShape2D_cnmh4")
+
+[node name="Arranhar" type="Area2D" parent="." unique_id=2124887939]
+position = Vector2(80, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arranhar" unique_id=951834763]
+scale = Vector2(4, 6)
+shape = SubResource("RectangleShape2D_x55jb")
+
+[node name="Mordida" type="Area2D" parent="." unique_id=147187014]
+position = Vector2(80, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Mordida" unique_id=1748804006]
+scale = Vector2(7, 5)
+shape = SubResource("RectangleShape2D_x55jb")

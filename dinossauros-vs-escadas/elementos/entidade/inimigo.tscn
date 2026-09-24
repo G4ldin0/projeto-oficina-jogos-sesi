@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ud70jedfkl8j"]
+
+[ext_resource type="Script" uid="uid://c3cudtcrxycnb" path="res://elementos/entidade/inimigo.gd" id="1_8te2x"]
+[ext_resource type="Texture2D" uid="uid://byu33wy7ijtkw" path="res://assets/sprites/inimigos/infernais/IdleDiabrete.png" id="2_5xq3u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upvks"]
+
+[node name="Inimigo" type="CharacterBody2D" unique_id=1637859449 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_8te2x")
+vida_maxima = 8.0
+velocidade = 100.0
+dano = 1.0
+sprite = NodePath("Sprite2D")
+metadata/_custom_type_script = "uid://c3cudtcrxycnb"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=445150616]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_5xq3u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1062725849]
+position = Vector2(1, -1)
+scale = Vector2(2.909, 4)
+shape = SubResource("RectangleShape2D_upvks")
