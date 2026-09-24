@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://sodl0wrvio3d"]
+
+[ext_resource type="Script" uid="uid://bn6xk61r7lthg" path="res://elementos/mapa/gerenciador_de_mapa.gd" id="1_ryo4i"]
+[ext_resource type="PackedScene" uid="uid://bsn76nwnc17tl" path="res://elementos/entidade/jogador.tscn" id="2_rylnw"]
+[ext_resource type="PackedScene" uid="uid://kofsva0t2k3q" path="res://elementos/mapa/Sala01.tscn" id="3_f2k5m"]
+[ext_resource type="PackedScene" uid="uid://i76kancmywar" path="res://elementos/mapa/Sala02.tscn" id="4_cqq1r"]
+
+[node name="GerenciadorDeMapa" type="Node2D" unique_id=1083271187 node_paths=PackedStringArray("sala_inicial")]
+script = ExtResource("1_ryo4i")
+sala_inicial = NodePath("salas/Sala")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1746413882]
+unique_name_in_owner = true
+position = Vector2(568, 320)
+zoom = Vector2(0.65, 0.65)
+
+[node name="salas" type="Node" parent="." unique_id=720784243]
+
+[node name="Sala" parent="salas" unique_id=1623134922 node_paths=PackedStringArray("salas") instance=ExtResource("3_f2k5m")]
+salas = {
+NodePath("Portas/porta_direita"): NodePath("../Sala2/Portas/porta_esquerda")
+}
+
+[node name="debugBordas" parent="salas/Sala" index="1" unique_id=1838888082]
+process_mode = 4
+
+[node name="Sala2" parent="salas" unique_id=490278440 node_paths=PackedStringArray("salas") instance=ExtResource("4_cqq1r")]
+position = Vector2(1292, 20)
+salas = {
+NodePath("Portas/porta_esquerda"): NodePath("../Sala/Portas/porta_direita")
+}
+
+[node name="debugBordas" parent="salas/Sala2" index="1" unique_id=1838888082]
+process_mode = 4
+
+[node name="Jogador" parent="." unique_id=1641892574 instance=ExtResource("2_rylnw")]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(332, 328)
+
+[editable path="salas/Sala"]
+[editable path="salas/Sala2"]
