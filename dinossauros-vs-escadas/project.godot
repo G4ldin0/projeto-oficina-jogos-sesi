@@ -14,6 +14,10 @@ config/name="dinossauros vs escadas"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+AudioStreamPlayer2d="*uid://dpqxahms26c0y"
+
 [display]
 
 window/stretch/mode="canvas_items"

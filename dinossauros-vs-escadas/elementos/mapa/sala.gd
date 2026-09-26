@@ -1,7 +1,7 @@
 extends Node2D
 class_name Sala
 
-@onready var gerenciador_de_mapa:GerenciadorDeMapa = get_tree().root.get_child(0)
+@onready var gerenciador_de_mapa:GerenciadorDeMapa = get_tree().root.get_node("GerenciadorDeMapa")
 var inimigos:Array[Inimigo]
 var portas:Array[Area2D]
 var pode_sair:bool = false

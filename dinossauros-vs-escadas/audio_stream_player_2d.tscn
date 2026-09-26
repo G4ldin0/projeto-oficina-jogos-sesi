@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dpqxahms26c0y"]
+
+[ext_resource type="AudioStream" uid="uid://boiejgk6niru" path="res://assets/audio/musica-do-djabo.mp3" id="1_d2dya"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" unique_id=212248434]
+stream = ExtResource("1_d2dya")
+autoplay = true
