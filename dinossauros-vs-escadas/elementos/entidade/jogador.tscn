@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cfv7vajpdtwbg" path="res://elementos/entidade/player.gd" id="1_r7hdx"]
 [ext_resource type="Texture2D" uid="uid://cahmwbmogavar" path="res://assets/sprites/Blitz/IdleBlitz.png" id="2_7x66v"]
 [ext_resource type="AudioStream" uid="uid://b3j0p6thh5o3r" path="res://assets/audio/mordida.mp3" id="3_7x66v"]
+[ext_resource type="AudioStream" uid="uid://hdp12psmogy" path="res://assets/audio/rasgarrrrrr cunhaaaaaaaaaaaarrrrrrr.mp3" id="3_our3m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnmh4"]
 
@@ -37,6 +38,9 @@ position = Vector2(80, 0)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arranhar" unique_id=951834763]
 scale = Vector2(4, 6)
 shape = SubResource("RectangleShape2D_x55jb")
+
+[node name="arranhar_sfx" type="AudioStreamPlayer" parent="Arranhar" unique_id=25080870]
+stream = ExtResource("3_our3m")
 
 [node name="Mordida" type="Area2D" parent="." unique_id=147187014]
 position = Vector2(80, 0)

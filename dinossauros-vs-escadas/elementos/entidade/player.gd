@@ -1,6 +1,7 @@
 class_name Player
 extends Entidade
 @onready var mordida_sfx: AudioStreamPlayer = $Mordida/Mordida_sfx
+@onready var arranhar_sfx: AudioStreamPlayer = $Arranhar/arranhar_sfx
 
 func _ready() -> void:
 	super._ready()
@@ -67,7 +68,8 @@ var mordidaKnockback = 500
 var cooldownArranhar = 0.5
 var cooldownMordida = 1.2
 
-func arranhar() -> void: #Ambos utilizam uma função do jogador com esses parâmetros
+func arranhar() -> void:
+	arranhar_sfx.play()
 	realizar_ataque("Arranhar", $Arranhar, dano * 0.5, arranharKnockback, cooldownArranhar)
 
 func mordida() -> void:
