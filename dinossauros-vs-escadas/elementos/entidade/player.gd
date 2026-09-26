@@ -17,17 +17,27 @@ func _physics_process(_delta: float) -> void:
 		direcaoAtual = direcao
 	
 	if direcaoAtual == Vector2.RIGHT:
-		$SpriteBlitz.flip_h = false # Deixa o personagem olhando para a direita, padrão
+		$SideBlitz.flip_h = false # Deixa o personagem olhando para a direita, padrão
+		$SideBlitz.visible = true
+		$UpBlitz.visible = false
 		posAtual = Vector2(80,0)
 		rotaAtual = 0
 	elif direcaoAtual == Vector2.LEFT:
-		$SpriteBlitz.flip_h = true # para a esquerda
+		$SideBlitz.flip_h = true # para a esquerda
+		$SideBlitz.visible = true
+		$UpBlitz.visible = false
 		posAtual = Vector2(-80,0)
 		rotaAtual = 0
 	elif direcaoAtual == Vector2.UP:
+		$UpBlitz.flip_v = false
+		$UpBlitz.visible = true
+		$SideBlitz.visible = false
 		posAtual = Vector2(0,-60)
 		rotaAtual = 90
 	elif direcaoAtual == Vector2.DOWN:
+		$UpBlitz.flip_v = true
+		$UpBlitz.visible = true
+		$SideBlitz.visible = false
 		posAtual = Vector2(0,60)
 		rotaAtual = 90
 	$Arranhar.position = posAtual

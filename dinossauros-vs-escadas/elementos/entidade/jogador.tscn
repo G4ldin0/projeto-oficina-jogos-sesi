@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cfv7vajpdtwbg" path="res://elementos/entidade/player.gd" id="1_r7hdx"]
 [ext_resource type="Texture2D" uid="uid://cahmwbmogavar" path="res://assets/sprites/Blitz/IdleBlitz.png" id="2_7x66v"]
+[ext_resource type="Texture2D" uid="uid://d0bakspy1ou83" path="res://assets/sprites/spritesheet.png" id="2_our3m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnmh4"]
 
@@ -12,10 +13,17 @@ script = ExtResource("1_r7hdx")
 vida_maxima = 5.0
 velocidade = 400.0
 dano = 6.0
-sprite = NodePath("SpriteBlitz")
+sprite = NodePath("SideBlitz")
 metadata/_custom_type_script = "uid://cfv7vajpdtwbg"
 
-[node name="SpriteBlitz" type="Sprite2D" parent="." unique_id=1888630440]
+[node name="UpBlitz" type="Sprite2D" parent="." unique_id=83258162]
+visible = false
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_our3m")
+region_enabled = true
+region_rect = Rect2(787, 1909, 142, 329)
+
+[node name="SideBlitz" type="Sprite2D" parent="." unique_id=1888630440]
 texture_filter = 1
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_7x66v")
