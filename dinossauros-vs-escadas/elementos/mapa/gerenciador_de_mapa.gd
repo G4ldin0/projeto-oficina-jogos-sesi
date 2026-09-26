@@ -16,13 +16,11 @@ func _ready():
 		salas.append(sala)
 		if sala == sala_inicial:
 			continue
-		for inimigo in sala.inimigos:
-			inimigo.process_mode = Node.PROCESS_MODE_DISABLED
+		sala.process_mode = Node.PROCESS_MODE_DISABLED
 
 
 func ativar_sala(sala:Sala):
-	for inimigo in sala.inimigos:
-		inimigo.process_mode = Node.PROCESS_MODE_INHERIT
+	sala.process_mode = Node.PROCESS_MODE_PAUSABLE
 
 func trocar_sala(porta:Area2D) -> void:
 	var sala_alvo:Sala
@@ -35,9 +33,10 @@ func trocar_sala(porta:Area2D) -> void:
 		print('sala não encontrada')
 		return
 	
-	#jogador.process_mode = Node.PROCESS_MODE_DISABLED
-	await create_tween().tween_property(camera, "position", sala_alvo.global_position, 2.0).finished
-	#jogador.process_mode = Node.PROCESS_MODE_INHERIT
-	ativar_sala(sala_alvo)
+	jogador.set_physics_process(false)
+	var tween = create_tween().tween_property(camera, "position", sala_alvo.global_position, 2.0)
+	await tween.finished
+	jogador.set_physics_process(true)
 	
 	jogador.position = porta.global_position + (sala_alvo.global_position - porta.global_position).normalized() * 150.0
+	ativar_sala(sala_alvo)

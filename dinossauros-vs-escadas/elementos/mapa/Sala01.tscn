@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c8qw2d24hd7eu" path="res://elementos/mapa/sala.gd" id="1_7bv6p"]
 [ext_resource type="Texture2D" uid="uid://dli1xnynbvpvm" path="res://icon.svg" id="2_fowdg"]
-[ext_resource type="PackedScene" uid="uid://ud70jedfkl8j" path="res://elementos/entidade/inimigo.tscn" id="2_w8vur"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6cxqi"]
 distance = -307.78
@@ -44,9 +43,6 @@ shape = SubResource("WorldBoundaryShape2D_xtmpo")
 shape = SubResource("WorldBoundaryShape2D_grxkp")
 
 [node name="Inimigos" type="Node2D" parent="." unique_id=1384443739]
-
-[node name="Inimigo" parent="Inimigos" unique_id=1637859449 instance=ExtResource("2_w8vur")]
-position = Vector2(252, 147)
 
 [node name="Portas" type="Node2D" parent="." unique_id=840813761]
 

@@ -10,7 +10,7 @@ var pode_sair:bool = false
 
 func _ready() -> void:
 	if $Inimigos.get_child_count() == 0:
-		pode_sair = true
+		_liberar_sala()
 	
 	for inimigo in $Inimigos.get_children():
 		inimigos.append(inimigo as Inimigo)
