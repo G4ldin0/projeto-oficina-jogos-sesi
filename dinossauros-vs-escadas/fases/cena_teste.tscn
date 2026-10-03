@@ -1,12 +1,13 @@
 [gd_scene format=3 uid="uid://dcldth85u2s0e"]
 
 [ext_resource type="PackedScene" uid="uid://bsn76nwnc17tl" path="res://elementos/entidade/jogador.tscn" id="1_ht5g6"]
-[ext_resource type="PackedScene" uid="uid://ud70jedfkl8j" path="res://elementos/entidade/inimigo.tscn" id="2_tw7gb"]
+[ext_resource type="PackedScene" uid="uid://bt5wwutb8on12" path="res://elementos/entidade/inimigos/Esqueleto.tscn" id="3_tw7gb"]
 
 [node name="CenaTeste" type="Node2D" unique_id=692552549]
 
 [node name="Jogador" parent="." unique_id=1641892574 instance=ExtResource("1_ht5g6")]
 position = Vector2(97, 504)
 
-[node name="Inimigo" parent="." unique_id=1637859449 instance=ExtResource("2_tw7gb")]
-position = Vector2(1020, 507)
+[node name="Esqueleto" parent="." unique_id=1238029976 instance=ExtResource("3_tw7gb")]
+position = Vector2(683, 294)
+velocidade = 75.0

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d3bbi46wsmo13"]
+
+[ext_resource type="PackedScene" uid="uid://ca3ro6gu2ddqy" path="res://elementos/projeteis/Projetil.tscn" id="1_lv38b"]
+[ext_resource type="Script" uid="uid://dgxtv7ywaguq2" path="res://elementos/projeteis/osso.gd" id="2_k65pt"]
+
+[node name="Osso" unique_id=1043094240 instance=ExtResource("1_lv38b")]
+script = ExtResource("2_k65pt")

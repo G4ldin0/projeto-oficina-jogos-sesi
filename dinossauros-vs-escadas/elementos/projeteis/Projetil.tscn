@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ca3ro6gu2ddqy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6cxqi"]
+
+[node name="Projetil" type="Area2D" unique_id=1075115218]
+input_pickable = false
+linear_damp = 0.0
+angular_damp = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=765035866]
+shape = SubResource("CircleShape2D_6cxqi")
+
+[node name="Timer" type="Timer" parent="." unique_id=539199471]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_timeout"]
