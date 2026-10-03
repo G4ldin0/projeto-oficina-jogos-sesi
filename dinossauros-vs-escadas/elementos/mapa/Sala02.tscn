@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c8qw2d24hd7eu" path="res://elementos/mapa/sala.gd" id="1_gyj8h"]
 [ext_resource type="PackedScene" uid="uid://ud70jedfkl8j" path="res://elementos/entidade/inimigo.tscn" id="2_av8rw"]
 [ext_resource type="Texture2D" uid="uid://dli1xnynbvpvm" path="res://icon.svg" id="2_lgd0x"]
+[ext_resource type="PackedScene" uid="uid://cavd2ifc62lpr" path="res://elementos/mapa/porta.tscn" id="4_av8rw"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6cxqi"]
 distance = -307.78
@@ -18,8 +19,6 @@ distance = -486.12
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_grxkp"]
 normal = Vector2(-1, 0)
 distance = -601.18
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cxqi"]
 
 [node name="Sala" type="Node2D" unique_id=1623134922]
 script = ExtResource("1_gyj8h")
@@ -52,19 +51,9 @@ position = Vector2(233, 139)
 
 [node name="Portas" type="Node2D" parent="." unique_id=525681050]
 
-[node name="porta_superior" type="Area2D" parent="Portas" unique_id=712273389]
-position = Vector2(-2, -279)
-monitoring = false
+[node name="PortaEsquerda" parent="Portas" unique_id=1834440439 instance=ExtResource("4_av8rw")]
+position = Vector2(-426, 2)
+direcao_sair = Vector2(1, 0)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portas/porta_superior" unique_id=2058632203]
-shape = SubResource("RectangleShape2D_6cxqi")
-
-[node name="porta_esquerda" type="Area2D" parent="Portas" unique_id=1916518440]
-position = Vector2(-430, 1)
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portas/porta_esquerda" unique_id=1424712534]
-shape = SubResource("RectangleShape2D_6cxqi")
-
-[connection signal="body_entered" from="Portas/porta_superior" to="." method="_on_porta_body_entered" flags=18]
-[connection signal="body_entered" from="Portas/porta_esquerda" to="." method="_on_porta_body_entered" flags=18]
+[node name="PortaSuperior" parent="Portas" unique_id=46564048 instance=ExtResource("4_av8rw")]
+position = Vector2(0, -280)

@@ -16,22 +16,22 @@ zoom = Vector2(0.65, 0.65)
 
 [node name="salas" type="Node" parent="." unique_id=720784243]
 
-[node name="Sala" parent="salas" unique_id=1623134922 node_paths=PackedStringArray("salas") instance=ExtResource("3_f2k5m")]
-salas = {
-NodePath("Portas/porta_direita"): NodePath("../Sala2/Portas/porta_esquerda")
-}
+[node name="Sala" parent="salas" unique_id=1623134922 instance=ExtResource("3_f2k5m")]
 
 [node name="debugBordas" parent="salas/Sala" index="1" unique_id=1838888082]
 process_mode = 4
 
-[node name="Sala2" parent="salas" unique_id=490278440 node_paths=PackedStringArray("salas") instance=ExtResource("4_cqq1r")]
+[node name="porta_direita2" parent="salas/Sala/Portas" parent_id_path=PackedInt32Array(1623134922, 840813761) index="1" unique_id=468628239 node_paths=PackedStringArray("outra_porta")]
+outra_porta = NodePath("../../../Sala2/Portas/PortaEsquerda")
+
+[node name="Sala2" parent="salas" unique_id=490278440 instance=ExtResource("4_cqq1r")]
 position = Vector2(1292, 20)
-salas = {
-NodePath("Portas/porta_esquerda"): NodePath("../Sala/Portas/porta_direita")
-}
 
 [node name="debugBordas" parent="salas/Sala2" index="1" unique_id=1838888082]
 process_mode = 4
+
+[node name="PortaEsquerda" parent="salas/Sala2/Portas" parent_id_path=PackedInt32Array(490278440, 525681050) index="0" unique_id=1834440439 node_paths=PackedStringArray("outra_porta")]
+outra_porta = NodePath("../../../Sala/Portas/porta_direita2")
 
 [node name="Jogador" parent="." unique_id=1641892574 instance=ExtResource("2_rylnw")]
 unique_name_in_owner = true

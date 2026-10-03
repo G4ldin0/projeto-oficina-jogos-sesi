@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cavd2ifc62lpr"]
+
+[ext_resource type="Script" uid="uid://c50qyqsnympdj" path="res://elementos/mapa/porta.gd" id="1_4wcel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cxqi"]
+
+[node name="Porta" type="Area2D" unique_id=1834440439 groups=["porta"]]
+script = ExtResource("1_4wcel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1387967785]
+shape = SubResource("RectangleShape2D_6cxqi")
+
+[node name="direcao" type="RayCast2D" parent="." unique_id=691577808]
+unique_name_in_owner = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1060323805]
+unique_name_in_owner = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
