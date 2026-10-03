@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://buwk1gip1n0mm"
+path="res://.godot/imported/escada (5).mp3-0d5a456c6279a1a04b83b4d7f409af8e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/escada (5).mp3"
+dest_files=["res://.godot/imported/escada (5).mp3-0d5a456c6279a1a04b83b4d7f409af8e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
