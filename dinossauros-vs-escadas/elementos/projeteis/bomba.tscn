@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dextn2ergv60s"]
+
+[ext_resource type="Script" uid="uid://co4kfitq3kmd7" path="res://elementos/Projeteis/bomba.gd" id="1_6rrin"]
+[ext_resource type="Texture2D" uid="uid://d0bakspy1ou83" path="res://assets/sprites/spriteshit.png" id="1_ocfp7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pqc12"]
+radius = 29.427877
+
+[node name="Bomba" type="RigidBody2D" unique_id=931721239]
+gravity_scale = 0.0
+script = ExtResource("1_6rrin")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=99604409]
+position = Vector2(9, 9)
+shape = SubResource("CircleShape2D_pqc12")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=990128280]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_ocfp7")
+region_enabled = true
+region_rect = Rect2(47, 1246, 368, 367)
