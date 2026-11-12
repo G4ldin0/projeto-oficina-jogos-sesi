@@ -2,6 +2,7 @@ class_name Player
 extends Entidade
 @onready var mordida_sfx: AudioStreamPlayer = $Mordida/Mordida_sfx
 @onready var arranhar_sfx: AudioStreamPlayer = $Arranhar/arranhar_sfx
+const BOMBA = preload("uid://dextn2ergv60s")
 
 func _ready() -> void:
 	super._ready()
@@ -60,6 +61,9 @@ func _physics_process(_delta: float) -> void:
 		arranhar()
 	if Input.is_action_just_pressed("MordidaAtk"):
 		mordida()
+	
+	if Input.is_action_just_pressed("bomba"):
+		jogar_bomba()
 
 var podeArranhar = true
 var podeMorder = true
@@ -76,6 +80,12 @@ func mordida() -> void:
 	mordida_sfx.play()
 	realizar_ataque("Mordida", $Mordida, dano, mordidaKnockback, cooldownMordida)
 
+func jogar_bomba() -> void:
+	var nova_bomba:Projetil = BOMBA.instantiate()
+	nova_bomba.position = position + direcaoAtual * 100.0
+	nova_bomba.direcao = direcaoAtual
+	get_parent().add_child(nova_bomba)
+
 var ataquesDisponiveis = {
 	"Arranhar" = true,
 	"Mordida" = true
@@ -86,8 +96,19 @@ func realizar_ataque(nome, area, dano_ataque:float, knockback:float, cooldown:fl
 		return
 	ataquesDisponiveis[nome] = false
 	
-	var corposNaArea = area.get_overlapping_bodies()
+	var arranharVfx = $Arranhar/spriteArranhar
 	
+	var corposNaArea = area.get_overlapping_bodies()
+	var flip:bool = direcaoAtual.x == -1 or direcaoAtual.y == -1
+	arranharVfx.visible = true
+	arranharVfx.scale = Vector2.ZERO
+	arranharVfx.flip_h = flip
+	arranharVfx.offset.x = -130.0 if flip else 130.0
+	arranharVfx.position.x = 79.0 if flip else -79.0
+	arranharVfx.rotate(PI/2 if flip else -PI/2)
+	var tween = get_tree().create_tween().set_parallel(true)
+	tween.tween_property(arranharVfx, "scale", Vector2(0.6, 0.6), 0.25)
+	tween.tween_property(arranharVfx, "rotation", 0.0, 0.25)
 	for corpo in corposNaArea:
 		if corpo is Inimigo:
 			var direcao = global_position.direction_to(corpo.global_position)
@@ -95,13 +116,14 @@ func realizar_ataque(nome, area, dano_ataque:float, knockback:float, cooldown:fl
 			corpo.receber_dano(dano_ataque)
 			print("Inimigo atingido por ", nome, " , Dano Entregue:", dano_ataque)
 	await get_tree().create_timer(cooldown).timeout
+	arranharVfx.visible = false
 	ataquesDisponiveis[nome] = true
 
 func receber_dano(valor: float) -> void:
 	super.receber_dano(valor)
 	
 	if vida <= 0:
-		morrer()
+		call_deferred("morrer")
 
 func morrer() -> void:
 	get_tree().reload_current_scene()

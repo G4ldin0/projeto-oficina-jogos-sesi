@@ -18,5 +18,5 @@ func _matar_inimigo(inimigo:Inimigo):
 
 func _liberar_sala(ativar:bool):
 	pode_sair = ativar
-	for porta:Area2D in $Portas.get_children():
-		porta.monitoring = ativar
+	for porta:Porta in $Portas.get_children():
+		porta.trocar_acesso_porta(ativar)

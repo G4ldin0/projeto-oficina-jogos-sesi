@@ -4,7 +4,7 @@ extends Area2D
 
 signal trocar_sala(proxima_porta:Porta)
 
-@onready var sprite:Sprite2D = %Sprite2D
+@onready var sprite:AnimatedSprite2D = %Sprite2D
 @onready var sala:Sala = get_parent().get_parent() #  feio
 
 func _validate_property(property: Dictionary):
@@ -27,14 +27,25 @@ func _get_configuration_warnings() -> PackedStringArray:
 		if dir.length() == 0.0: dir = Vector2.DOWN
 		direcao_sair = dir.normalized()
 		if %direcao:
-			%direcao.target_position = direcao_sair * 50
+			%direcao.target_position = direcao_sair * 75
 
 func _ready() -> void:
 	%direcao.target_position = direcao_sair * 50
 
 func get_posicao_sair() -> Vector2:
-	return global_position + direcao_sair * 100.0
+	return global_position + direcao_sair * 150.0
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and outra_porta:
 		trocar_sala.emit(outra_porta)
+
+func trocar_acesso_porta(aberto:bool) -> void:
+	if aberto:
+		sprite.play("opening")
+		await sprite.animation_finished
+		sprite.play("open")
+		
+	else:
+		sprite.play("default")
+	
+	monitoring = aberto

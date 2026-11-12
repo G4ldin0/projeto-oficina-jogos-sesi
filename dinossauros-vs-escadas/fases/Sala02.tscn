@@ -54,6 +54,7 @@ shape = SubResource("WorldBoundaryShape2D_grxkp")
 
 [node name="Esqueleto" parent="Inimigos" unique_id=1238029976 instance=ExtResource("3_1b1xt")]
 position = Vector2(455, -31)
+vida_maxima = 10.0
 
 [node name="Inimigo" parent="Inimigos" unique_id=1637859449 instance=ExtResource("2_av8rw")]
 position = Vector2(233, 139)

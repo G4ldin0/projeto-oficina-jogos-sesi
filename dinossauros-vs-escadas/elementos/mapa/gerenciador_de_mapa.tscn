@@ -17,6 +17,7 @@ zoom = Vector2(0.65, 0.65)
 [node name="salas" type="Node" parent="." unique_id=720784243]
 
 [node name="Sala" parent="salas" unique_id=1623134922 instance=ExtResource("3_f2k5m")]
+position = Vector2(564, 356)
 
 [node name="debugBordas" parent="salas/Sala" index="1" unique_id=1838888082]
 process_mode = 4
@@ -25,7 +26,7 @@ process_mode = 4
 outra_porta = NodePath("../../../Sala2/Portas/PortaEsquerda")
 
 [node name="Sala2" parent="salas" unique_id=490278440 instance=ExtResource("4_cqq1r")]
-position = Vector2(1292, 20)
+position = Vector2(1784, 324)
 
 [node name="debugBordas" parent="salas/Sala2" index="1" unique_id=1838888082]
 process_mode = 4
