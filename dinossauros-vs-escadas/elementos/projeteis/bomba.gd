@@ -1,11 +1,22 @@
-extends RigidBody2D
+extends Projetil
 
+const DANO_BOMBA:float = 9.0
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	linear_velocity = Vector2(0,5)
+func _physics_process(delta: float) -> void:
+	if velocidade > 0:
+		velocidade -= 400 * delta
+	else: velocidade = 0
+	super._physics_process(delta)
 
+func _on_body_entered(_body: Node) -> void:
+	print(_body)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _timeout() -> void:
+	var bodies:Array[Node2D] = $areaBomba.get_overlapping_bodies()
+	print(bodies)
+	for body:Entidade in bodies:
+		body.receber_dano(DANO_BOMBA)
+	$Sprite2D.visible = false
+	$areaBomba/spriteExplosao.play("default")
+	await $areaBomba/spriteExplosao.animation_finished
+	queue_free()
