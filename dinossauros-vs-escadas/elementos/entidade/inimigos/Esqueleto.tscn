@@ -28,7 +28,7 @@ debug_color = Color(0, 0.6467808, 0.23621196, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=445526021]
 texture_filter = 1
-scale = Vector2(4.5625, 4.5625)
+scale = Vector2(3.308, 3.308)
 texture = ExtResource("2_hg6rv")
 
 [node name="CooldownAtirar" type="Timer" parent="." unique_id=1486013186]

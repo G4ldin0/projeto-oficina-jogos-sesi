@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://bsn76nwnc17tl"]
 
 [ext_resource type="Script" uid="uid://cfv7vajpdtwbg" path="res://elementos/entidade/player.gd" id="1_r7hdx"]
+[ext_resource type="Texture2D" uid="uid://clxn23qo1lopk" path="res://assets/sprites/spritesheet.png" id="2_7pea5"]
 [ext_resource type="Texture2D" uid="uid://cahmwbmogavar" path="res://assets/sprites/Blitz/IdleBlitz.png" id="2_7x66v"]
 [ext_resource type="AudioStream" uid="uid://b3j0p6thh5o3r" path="res://assets/audio/mordida.mp3" id="3_7x66v"]
 [ext_resource type="AudioStream" uid="uid://hdp12psmogy" path="res://assets/audio/rasgarrrrrr cunhaaaaaaaaaaaarrrrrrr.mp3" id="3_our3m"]
+[ext_resource type="Texture2D" uid="uid://calu2ujiptsmi" path="res://assets/sprites/Blitz/Sprites De Ataques/ArranharSprite.png" id="4_8v21i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnmh4"]
 
@@ -18,8 +20,8 @@ sprite = NodePath("SideBlitz")
 metadata/_custom_type_script = "uid://cfv7vajpdtwbg"
 
 [node name="UpBlitz" type="Sprite2D" parent="." unique_id=83258162]
-visible = false
 scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_7pea5")
 region_enabled = true
 region_rect = Rect2(787, 1909, 142, 329)
 
@@ -41,6 +43,13 @@ shape = SubResource("RectangleShape2D_x55jb")
 
 [node name="arranhar_sfx" type="AudioStreamPlayer" parent="Arranhar" unique_id=25080870]
 stream = ExtResource("3_our3m")
+
+[node name="spriteArranhar" type="Sprite2D" parent="Arranhar" unique_id=2146437583]
+visible = false
+position = Vector2(-78.31, 4)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_8v21i")
+offset = Vector2(130, 0)
 
 [node name="Mordida" type="Area2D" parent="." unique_id=147187014]
 position = Vector2(80, 0)
