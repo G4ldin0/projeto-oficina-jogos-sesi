@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dam1c820u03aw"]
+
+[ext_resource type="PackedScene" uid="uid://5ou0fjqspb3s" path="res://interface/InterfaceGameplay.tscn" id="1_xkndl"]
+[ext_resource type="Script" uid="uid://bn6xk61r7lthg" path="res://elementos/mapa/gerenciador_de_mapa.gd" id="2_t88pq"]
+[ext_resource type="PackedScene" uid="uid://kofsva0t2k3q" path="res://fases/Sala01.tscn" id="3_r0x5m"]
+[ext_resource type="PackedScene" uid="uid://i76kancmywar" path="res://fases/Sala02.tscn" id="4_3mrqo"]
+[ext_resource type="PackedScene" uid="uid://bsn76nwnc17tl" path="res://elementos/entidade/jogador.tscn" id="5_joorw"]
+
+[node name="Game" type="Node" unique_id=894360986]
+
+[node name="GerenciadorDeMapa" type="Node2D" parent="." unique_id=1083271187 node_paths=PackedStringArray("sala_inicial")]
+script = ExtResource("2_t88pq")
+sala_inicial = NodePath("salas/Sala")
+
+[node name="Camera2D" type="Camera2D" parent="GerenciadorDeMapa" unique_id=1746413882]
+unique_name_in_owner = true
+position = Vector2(568, 320)
+zoom = Vector2(0.65, 0.65)
+
+[node name="salas" type="Node" parent="GerenciadorDeMapa" unique_id=720784243]
+
+[node name="Sala" parent="GerenciadorDeMapa/salas" unique_id=1623134922 instance=ExtResource("3_r0x5m")]
+position = Vector2(564, 356)
+
+[node name="debugBordas" parent="GerenciadorDeMapa/salas/Sala" index="1" unique_id=1838888082]
+process_mode = 4
+
+[node name="porta_direita2" parent="GerenciadorDeMapa/salas/Sala/Portas" parent_id_path=PackedInt32Array(1623134922, 840813761) index="1" unique_id=468628239 node_paths=PackedStringArray("outra_porta")]
+outra_porta = NodePath("../../../Sala2/Portas/PortaEsquerda")
+
+[node name="Sala2" parent="GerenciadorDeMapa/salas" unique_id=490278440 instance=ExtResource("4_3mrqo")]
+position = Vector2(1784, 324)
+
+[node name="debugBordas" parent="GerenciadorDeMapa/salas/Sala2" index="1" unique_id=1838888082]
+process_mode = 4
+
+[node name="PortaEsquerda" parent="GerenciadorDeMapa/salas/Sala2/Portas" parent_id_path=PackedInt32Array(490278440, 525681050) index="0" unique_id=1834440439 node_paths=PackedStringArray("outra_porta")]
+outra_porta = NodePath("../../../Sala/Portas/porta_direita2")
+
+[node name="Jogador" parent="GerenciadorDeMapa" unique_id=1641892574 instance=ExtResource("5_joorw")]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(332, 328)
+vida_maxima = 50.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1856360134]
+
+[node name="InterfaceGameplay" parent="CanvasLayer" unique_id=301800598 node_paths=PackedStringArray("player_ref") instance=ExtResource("1_xkndl")]
+player_ref = NodePath("../../GerenciadorDeMapa/Jogador")
+
+[editable path="GerenciadorDeMapa/salas/Sala"]
+[editable path="GerenciadorDeMapa/salas/Sala2"]

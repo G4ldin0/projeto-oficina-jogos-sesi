@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://5ou0fjqspb3s"]
+
+[ext_resource type="Texture2D" uid="uid://clxn23qo1lopk" path="res://assets/sprites/spritesheet.png" id="1_1fji7"]
+[ext_resource type="Script" uid="uid://ye235f30j2fq" path="res://interface/interface_gameplay.gd" id="1_pvwi3"]
+[ext_resource type="Texture2D" uid="uid://dnva5esjhnlm8" path="res://assets/sprites/bite.webp" id="2_54wd6"]
+[ext_resource type="Texture2D" uid="uid://b1c04gldqpmn3" path="res://assets/sprites/progress_bar.png" id="2_utkam"]
+[ext_resource type="Texture2D" uid="uid://calu2ujiptsmi" path="res://assets/sprites/Blitz/Sprites De Ataques/ArranharSprite.png" id="3_utkam"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6cxqi"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t88pq"]
+bg_color = Color(0.70980394, 0, 0, 1)
+
+[node name="InterfaceGameplay" type="Control" unique_id=301800598 node_paths=PackedStringArray("sprite", "barra_vida", "barra_vida_label", "cooldown_mordida", "cooldown_arranhao")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pvwi3")
+sprite = NodePath("vida/Control/sprite")
+barra_vida = NodePath("vida/VBoxContainer/barraVida/barraCor")
+barra_vida_label = NodePath("vida/VBoxContainer/barraVida/barraVidaLabel")
+cooldown_mordida = NodePath("HBoxContainer/VBoxContainer2/cooldownMordida")
+cooldown_arranhao = NodePath("HBoxContainer/VBoxContainer2/cooldownArranhao")
+
+[node name="vida" type="HBoxContainer" parent="." unique_id=1924244948]
+layout_mode = 1
+offset_right = 337.0
+offset_bottom = 101.0
+
+[node name="Control" type="Control" parent="vida" unique_id=2007912997]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="sprite" type="Sprite2D" parent="vida/Control" unique_id=931420724]
+position = Vector2(75, 55)
+scale = Vector2(0.67, 0.67)
+texture = ExtResource("1_1fji7")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(1853.5785, 814.08276, 441.57605, 158.6778)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="vida" unique_id=751936031]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="vida/VBoxContainer" unique_id=1107848574]
+layout_mode = 2
+text = "vida"
+horizontal_alignment = 1
+
+[node name="barraVida" type="Control" parent="vida/VBoxContainer" unique_id=1425710421]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="barraCor" type="ProgressBar" parent="vida/VBoxContainer/barraVida" unique_id=29331067]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -91.5
+offset_top = -16.0
+offset_right = 91.5
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_6cxqi")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t88pq")
+step = 1.0
+value = 92.0
+show_percentage = false
+
+[node name="barraVidaLabel" type="Label" parent="vida/VBoxContainer/barraVida" unique_id=1160571308]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "x/x"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1966745387]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -143.0
+offset_right = 277.0
+offset_bottom = 61.0
+grow_vertical = 0
+scale = Vector2(0.69, 0.69)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=981824550]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=1210106426]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=1573500941]
+custom_maximum_size = Vector2(150, -1)
+layout_mode = 2
+texture = ExtResource("2_54wd6")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer" unique_id=6543542]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "mordida"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer" unique_id=321027015]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1280375186]
+layout_mode = 2
+texture = ExtResource("3_utkam")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer2" unique_id=162951119]
+layout_mode = 2
+text = "arranhar"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1695801270]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="cooldownMordida" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer2" unique_id=2118046335]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+step = 0.01
+value = 67.0
+fill_mode = 4
+texture_under = ExtResource("2_utkam")
+texture_progress = ExtResource("2_utkam")
+tint_under = Color(0.27143836, 0.2714384, 0.27143836, 1)
+tint_progress = Color(0.73161054, 0.7316106, 0.7316105, 1)
+
+[node name="cooldownArranhao" type="TextureProgressBar" parent="HBoxContainer/VBoxContainer2" unique_id=290010446]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+step = 0.01
+value = 69.0
+fill_mode = 4
+texture_under = ExtResource("2_utkam")
+texture_progress = ExtResource("2_utkam")
+tint_under = Color(0.27143836, 0.2714384, 0.27143836, 1)
+tint_progress = Color(0.73161054, 0.7316106, 0.7316105, 1)

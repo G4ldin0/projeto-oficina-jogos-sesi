@@ -146,6 +146,7 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_6cxqi")
 
 [node name="spriteExplosao" type="AnimatedSprite2D" parent="areaBomba" index="1" unique_id=481114686]
+visible = false
 z_index = 2
 scale = Vector2(7.28, 7.28)
 sprite_frames = SubResource("SpriteFrames_6cxqi")

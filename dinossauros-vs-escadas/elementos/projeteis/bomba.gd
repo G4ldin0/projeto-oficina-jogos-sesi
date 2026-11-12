@@ -14,8 +14,9 @@ func _on_body_entered(_body: Node) -> void:
 func _timeout() -> void:
 	var bodies:Array[Node2D] = $areaBomba.get_overlapping_bodies()
 	print(bodies)
-	for body:Entidade in bodies:
-		body.receber_dano(DANO_BOMBA)
+	for body in bodies:
+		if body is Entidade:
+			body.receber_dano(DANO_BOMBA)
 	$Sprite2D.visible = false
 	$areaBomba/spriteExplosao.play("default")
 	await $areaBomba/spriteExplosao.animation_finished

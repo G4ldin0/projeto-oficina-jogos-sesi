@@ -51,6 +51,11 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_8v21i")
 offset = Vector2(130, 0)
 
+[node name="timerArranhao" type="Timer" parent="Arranhar" unique_id=841516085]
+process_callback = 0
+wait_time = 0.5
+one_shot = true
+
 [node name="Mordida" type="Area2D" parent="." unique_id=147187014]
 position = Vector2(80, 0)
 
@@ -60,3 +65,8 @@ shape = SubResource("RectangleShape2D_x55jb")
 
 [node name="Mordida_sfx" type="AudioStreamPlayer" parent="Mordida" unique_id=898946113]
 stream = ExtResource("3_7x66v")
+
+[node name="timerMordida" type="Timer" parent="Mordida" unique_id=747047778]
+process_callback = 0
+wait_time = 1.2
+one_shot = true
