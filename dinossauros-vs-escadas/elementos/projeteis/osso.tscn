@@ -2,6 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://ca3ro6gu2ddqy" path="res://elementos/projeteis/Projetil.tscn" id="1_lv38b"]
 [ext_resource type="Script" uid="uid://dgxtv7ywaguq2" path="res://elementos/projeteis/osso.gd" id="2_k65pt"]
+[ext_resource type="Texture2D" uid="uid://bxh5d8aqgsllx" path="res://assets/sprites/Bone_JE3_BE2.webp" id="3_oscn5"]
 
 [node name="Osso" unique_id=1043094240 instance=ExtResource("1_lv38b")]
 script = ExtResource("2_k65pt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0" unique_id=1229944436]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_oscn5")
