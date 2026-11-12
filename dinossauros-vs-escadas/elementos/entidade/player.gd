@@ -74,7 +74,20 @@ var cooldownMordida = 1.2
 
 func arranhar() -> void:
 	arranhar_sfx.play()
-	realizar_ataque("Arranhar", $Arranhar, dano * 0.5, arranharKnockback, cooldownArranhar)
+	var arranharVfx = $Arranhar/spriteArranhar
+	var flip:bool = direcaoAtual.x == -1 or direcaoAtual.y == -1
+	arranharVfx.visible = true
+	arranharVfx.scale = Vector2.ZERO
+	arranharVfx.flip_h = flip
+	arranharVfx.offset.x = -130.0 if flip else 130.0
+	arranharVfx.position.x = 79.0 if flip else -79.0
+	arranharVfx.rotate(PI/2 if flip else -PI/2)
+	var tween = get_tree().create_tween().set_parallel(true)
+	tween.tween_property(arranharVfx, "scale", Vector2(0.6, 0.6), 0.25)
+	tween.tween_property(arranharVfx, "rotation", 0.0, 0.25)
+	await realizar_ataque("Arranhar", $Arranhar, dano * 0.5, arranharKnockback, cooldownArranhar)
+	arranharVfx.visible = false
+	
 
 func mordida() -> void:
 	mordida_sfx.play()
@@ -96,19 +109,8 @@ func realizar_ataque(nome, area, dano_ataque:float, knockback:float, cooldown:fl
 		return
 	ataquesDisponiveis[nome] = false
 	
-	var arranharVfx = $Arranhar/spriteArranhar
 	
 	var corposNaArea = area.get_overlapping_bodies()
-	var flip:bool = direcaoAtual.x == -1 or direcaoAtual.y == -1
-	arranharVfx.visible = true
-	arranharVfx.scale = Vector2.ZERO
-	arranharVfx.flip_h = flip
-	arranharVfx.offset.x = -130.0 if flip else 130.0
-	arranharVfx.position.x = 79.0 if flip else -79.0
-	arranharVfx.rotate(PI/2 if flip else -PI/2)
-	var tween = get_tree().create_tween().set_parallel(true)
-	tween.tween_property(arranharVfx, "scale", Vector2(0.6, 0.6), 0.25)
-	tween.tween_property(arranharVfx, "rotation", 0.0, 0.25)
 	for corpo in corposNaArea:
 		if corpo is Inimigo:
 			var direcao = global_position.direction_to(corpo.global_position)
@@ -116,7 +118,6 @@ func realizar_ataque(nome, area, dano_ataque:float, knockback:float, cooldown:fl
 			corpo.receber_dano(dano_ataque)
 			print("Inimigo atingido por ", nome, " , Dano Entregue:", dano_ataque)
 	await get_tree().create_timer(cooldown).timeout
-	arranharVfx.visible = false
 	ataquesDisponiveis[nome] = true
 
 func receber_dano(valor: float) -> void:
