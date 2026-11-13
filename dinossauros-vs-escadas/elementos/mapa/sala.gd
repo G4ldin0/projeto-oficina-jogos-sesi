@@ -3,13 +3,21 @@ class_name Sala
 
 var inimigos:Array[Inimigo]
 var pode_sair:bool = false
+var sala_iniciada: bool = false
 
-func _ready() -> void:
+func entrar_na_sala() -> void:
+	if sala_iniciada:
+		return
+
+	sala_iniciada = true
 	_liberar_sala($Inimigos.get_child_count() == 0)
 	
 	for inimigo in $Inimigos.get_children():
-		inimigos.append(inimigo as Inimigo)
-		inimigo.morreu.connect(_matar_inimigo.bind(inimigo))
+		var inimigo_entidade := inimigo as Inimigo
+		if inimigo_entidade == null:
+			continue
+		inimigos.append(inimigo_entidade)
+		inimigo_entidade.morreu.connect(_matar_inimigo.bind(inimigo_entidade))
 
 func _matar_inimigo(inimigo:Inimigo):
 	inimigos.remove_at(inimigos.find(inimigo))

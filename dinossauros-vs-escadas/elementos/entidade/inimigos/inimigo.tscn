@@ -6,6 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_upvks"]
 
 [node name="Inimigo" type="CharacterBody2D" unique_id=1637859449 node_paths=PackedStringArray("sprite")]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("1_otrvq")
 vida_maxima = 8.0
 velocidade = 100.0

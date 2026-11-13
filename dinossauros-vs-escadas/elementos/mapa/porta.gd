@@ -20,6 +20,8 @@ func _get_configuration_warnings() -> PackedStringArray:
 @export var outra_porta:Porta = null:
 	set(i):
 		outra_porta = i
+		if outra_porta != null and outra_porta.outra_porta != self:
+			outra_porta.outra_porta = self
 		update_configuration_warnings()
 
 @export var direcao_sair:Vector2 = Vector2.DOWN:

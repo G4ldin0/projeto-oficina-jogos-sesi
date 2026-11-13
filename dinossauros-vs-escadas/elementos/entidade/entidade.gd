@@ -2,6 +2,7 @@ class_name Entidade
 extends CharacterBody2D
 
 signal morreu
+signal vida_alterada(vida_atual: float, vida_maxima: float)
 
 @export var vida_maxima: float = 100
 @export var velocidade: float = 200
@@ -16,6 +17,7 @@ func _ready() -> void:
 	
 func receber_dano(valor: float) -> void:
 	vida -= valor
+	vida_alterada.emit(vida, vida_maxima)
 	
 	sprite.self_modulate = Color(1,0,0,0.8)
 	await get_tree().create_timer(0.1).timeout

@@ -40,6 +40,7 @@ func atacar() -> void:
 	$RayCast2D.target_position = direcao_de_ataque * 600
 	await get_tree().create_timer(0.25).timeout
 	var novo_projetil:Projetil = PROJETIL.instantiate()
+	novo_projetil.dano = dano
 	novo_projetil.direcao = direcao_de_ataque
 	novo_projetil.position = direcao_de_ataque * 100.0
 	add_child(novo_projetil)

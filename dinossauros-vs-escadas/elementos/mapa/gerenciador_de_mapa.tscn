@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bsn76nwnc17tl" path="res://elementos/entidade/jogador.tscn" id="2_rylnw"]
 [ext_resource type="PackedScene" uid="uid://kofsva0t2k3q" path="res://fases/Sala01.tscn" id="3_f2k5m"]
 [ext_resource type="PackedScene" uid="uid://i76kancmywar" path="res://fases/Sala02.tscn" id="4_cqq1r"]
+[ext_resource type="PackedScene" uid="uid://v40eb4jfhgrv" path="res://fases/sala_3.tscn" id="4_xguxn"]
 
 [node name="GerenciadorDeMapa" type="Node2D" unique_id=1083271187 node_paths=PackedStringArray("sala_inicial")]
 script = ExtResource("1_ryo4i")
@@ -22,6 +23,9 @@ position = Vector2(564, 356)
 [node name="debugBordas" parent="salas/Sala" index="1" unique_id=1838888082]
 process_mode = 4
 
+[node name="porta_superior2" parent="salas/Sala/Portas" parent_id_path=PackedInt32Array(1623134922, 840813761) index="0" unique_id=1834440439 node_paths=PackedStringArray("outra_porta")]
+outra_porta = NodePath("../../../Sala3/Portas/portaInferior")
+
 [node name="porta_direita2" parent="salas/Sala/Portas" parent_id_path=PackedInt32Array(1623134922, 840813761) index="1" unique_id=468628239 node_paths=PackedStringArray("outra_porta")]
 outra_porta = NodePath("../../../Sala2/Portas/PortaEsquerda")
 
@@ -32,7 +36,28 @@ position = Vector2(1784, 324)
 process_mode = 4
 
 [node name="PortaEsquerda" parent="salas/Sala2/Portas" parent_id_path=PackedInt32Array(490278440, 525681050) index="0" unique_id=1834440439 node_paths=PackedStringArray("outra_porta")]
-outra_porta = NodePath("../../../Sala/Portas/porta_direita2")
+outra_porta = NodePath("../../Sala3/Portas/porta_direita2")
+
+[node name="PortaSuperior" parent="salas/Sala2/Portas" parent_id_path=PackedInt32Array(490278440, 525681050) index="1" unique_id=46564048]
+position = Vector2(0, -252)
+
+[node name="Sala3" parent="salas/Sala2" unique_id=1510655750 instance=ExtResource("3_f2k5m")]
+position = Vector2(-1220, 32)
+
+[node name="debugBordas" parent="salas/Sala2/Sala3" index="1" unique_id=1838888082]
+process_mode = 4
+
+[node name="porta_superior2" parent="salas/Sala2/Sala3/Portas" parent_id_path=PackedInt32Array(1510655750, 840813761) index="0" unique_id=1834440439]
+position = Vector2(3, -317)
+
+[node name="porta_direita2" parent="salas/Sala2/Sala3/Portas" parent_id_path=PackedInt32Array(1510655750, 840813761) index="1" unique_id=468628239 node_paths=PackedStringArray("outra_porta")]
+outra_porta = NodePath("../../../Portas/PortaEsquerda")
+
+[node name="Sala3" parent="salas" unique_id=985394824 instance=ExtResource("4_xguxn")]
+position = Vector2(568, -467)
+
+[node name="portaInferior" parent="salas/Sala3/Portas" parent_id_path=PackedInt32Array(985394824, 1921126002) index="0" unique_id=1834440439 node_paths=PackedStringArray("outra_porta")]
+outra_porta = NodePath("../../../Sala/Portas/porta_superior2")
 
 [node name="Jogador" parent="." unique_id=1641892574 instance=ExtResource("2_rylnw")]
 unique_name_in_owner = true
@@ -41,3 +66,5 @@ position = Vector2(332, 328)
 
 [editable path="salas/Sala"]
 [editable path="salas/Sala2"]
+[editable path="salas/Sala2/Sala3"]
+[editable path="salas/Sala3"]

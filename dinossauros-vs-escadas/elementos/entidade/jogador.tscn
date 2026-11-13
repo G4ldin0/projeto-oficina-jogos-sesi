@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b3j0p6thh5o3r" path="res://assets/audio/mordida.mp3" id="3_7x66v"]
 [ext_resource type="AudioStream" uid="uid://hdp12psmogy" path="res://assets/audio/rasgarrrrrr cunhaaaaaaaaaaaarrrrrrr.mp3" id="3_our3m"]
 [ext_resource type="Texture2D" uid="uid://calu2ujiptsmi" path="res://assets/sprites/Blitz/Sprites De Ataques/ArranharSprite.png" id="4_8v21i"]
+[ext_resource type="Script" uid="uid://325r7e51w7n7" path="res://componentes/ComponenteInventario.gd" id="7_p3fdg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cnmh4"]
 
@@ -13,7 +14,7 @@
 
 [node name="Jogador" type="CharacterBody2D" unique_id=1641892574 node_paths=PackedStringArray("sprite") groups=["player"]]
 script = ExtResource("1_r7hdx")
-vida_maxima = 5.0
+vida_maxima = 15.0
 velocidade = 400.0
 dano = 6.0
 sprite = NodePath("SideBlitz")
@@ -36,6 +37,8 @@ shape = SubResource("RectangleShape2D_cnmh4")
 
 [node name="Arranhar" type="Area2D" parent="." unique_id=2124887939]
 position = Vector2(80, 0)
+collision_layer = 0
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arranhar" unique_id=951834763]
 scale = Vector2(4, 6)
@@ -58,6 +61,8 @@ one_shot = true
 
 [node name="Mordida" type="Area2D" parent="." unique_id=147187014]
 position = Vector2(80, 0)
+collision_layer = 0
+collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Mordida" unique_id=1748804006]
 scale = Vector2(7, 5)
@@ -70,3 +75,6 @@ stream = ExtResource("3_7x66v")
 process_callback = 0
 wait_time = 1.2
 one_shot = true
+
+[node name="ComponenteInventario" type="Node" parent="." unique_id=1145870797]
+script = ExtResource("7_p3fdg")

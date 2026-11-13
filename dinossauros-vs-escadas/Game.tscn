@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://bn6xk61r7lthg" path="res://elementos/mapa/gerenciador_de_mapa.gd" id="2_t88pq"]
 [ext_resource type="PackedScene" uid="uid://kofsva0t2k3q" path="res://fases/Sala01.tscn" id="3_r0x5m"]
 [ext_resource type="PackedScene" uid="uid://i76kancmywar" path="res://fases/Sala02.tscn" id="4_3mrqo"]
+[ext_resource type="PackedScene" uid="uid://5yfwucy3b0n6" path="res://fases/Sala03.tscn" id="4_r0x5m"]
 [ext_resource type="PackedScene" uid="uid://bsn76nwnc17tl" path="res://elementos/entidade/jogador.tscn" id="5_joorw"]
 
 [node name="Game" type="Node" unique_id=894360986]
@@ -25,11 +26,15 @@ position = Vector2(564, 356)
 [node name="debugBordas" parent="GerenciadorDeMapa/salas/Sala" index="1" unique_id=1838888082]
 process_mode = 4
 
+[node name="porta_superior2" parent="GerenciadorDeMapa/salas/Sala/Portas" parent_id_path=PackedInt32Array(1623134922, 840813761) index="0" unique_id=1834440439 node_paths=PackedStringArray("outra_porta")]
+position = Vector2(-3, -300)
+outra_porta = NodePath("../../../SalaChefao/Portas/PortaSuperior")
+
 [node name="porta_direita2" parent="GerenciadorDeMapa/salas/Sala/Portas" parent_id_path=PackedInt32Array(1623134922, 840813761) index="1" unique_id=468628239 node_paths=PackedStringArray("outra_porta")]
 outra_porta = NodePath("../../../Sala2/Portas/PortaEsquerda")
 
 [node name="Sala2" parent="GerenciadorDeMapa/salas" unique_id=490278440 instance=ExtResource("4_3mrqo")]
-position = Vector2(1784, 324)
+position = Vector2(1970, 297)
 
 [node name="debugBordas" parent="GerenciadorDeMapa/salas/Sala2" index="1" unique_id=1838888082]
 process_mode = 4
@@ -37,11 +42,16 @@ process_mode = 4
 [node name="PortaEsquerda" parent="GerenciadorDeMapa/salas/Sala2/Portas" parent_id_path=PackedInt32Array(490278440, 525681050) index="0" unique_id=1834440439 node_paths=PackedStringArray("outra_porta")]
 outra_porta = NodePath("../../../Sala/Portas/porta_direita2")
 
+[node name="SalaChefao" parent="GerenciadorDeMapa/salas" unique_id=985394824 instance=ExtResource("4_r0x5m")]
+position = Vector2(477, -548)
+
+[node name="PortaSuperior" parent="GerenciadorDeMapa/salas/SalaChefao/Portas" parent_id_path=PackedInt32Array(985394824, 525681050) index="0" unique_id=46564048 node_paths=PackedStringArray("outra_porta")]
+outra_porta = NodePath("../../../Sala/Portas/porta_superior2")
+
 [node name="Jogador" parent="GerenciadorDeMapa" unique_id=1641892574 instance=ExtResource("5_joorw")]
 unique_name_in_owner = true
 z_index = 1
 position = Vector2(332, 328)
-vida_maxima = 50.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1856360134]
 
@@ -50,3 +60,4 @@ player_ref = NodePath("../../GerenciadorDeMapa/Jogador")
 
 [editable path="GerenciadorDeMapa/salas/Sala"]
 [editable path="GerenciadorDeMapa/salas/Sala2"]
+[editable path="GerenciadorDeMapa/salas/SalaChefao"]

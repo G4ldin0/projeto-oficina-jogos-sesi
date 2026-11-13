@@ -9,6 +9,7 @@ var salas_concluidas:Array[Sala]
 @export var sala_inicial:Sala
 
 func _ready():
+	sala_inicial.entrar_na_sala()
 	jogador.position = sala_inicial.position
 	camera.position = sala_inicial.position
 	
@@ -23,10 +24,11 @@ func _ready():
 
 func trocar_sala(porta:Porta) -> void:
 	var sala_alvo = porta.owner
-	
+	print(sala_alvo)
 	jogador.set_physics_process(false)
-	var tween = create_tween().tween_property(camera, "position", sala_alvo.global_position, 2.0)
+	var tween = create_tween().tween_property(camera, "global_position", sala_alvo.global_position, 2.0)
 	await tween.finished
+	sala_alvo.entrar_na_sala()
 	jogador.set_physics_process(true)
 	
 	jogador.position = porta.get_posicao_sair()

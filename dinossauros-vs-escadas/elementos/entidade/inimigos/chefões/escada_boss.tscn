@@ -1,0 +1,81 @@
+[gd_scene format=4 uid="uid://sg03k6r4f1ni"]
+
+[ext_resource type="Script" uid="uid://ckqplnurxlvny" path="res://elementos/entidade/inimigos/chefões/escada_boss.gd" id="1_escada"]
+[ext_resource type="Texture2D" uid="uid://6c18mvg6sjyb" path="res://assets/sprites/inimigos/escada/escada.png" id="2_gr0d8"]
+[ext_resource type="Texture2D" uid="uid://c317qo08dqynq" path="res://assets/sprites/inimigos/escada/escada_quebrada.png" id="3_yulbw"]
+[ext_resource type="AudioStream" uid="uid://cq6nm0feysfox" path="res://assets/audio/escada (2).mp3" id="4_d06ix"]
+[ext_resource type="AudioStream" uid="uid://dx7moiphylodi" path="res://assets/audio/escada (3).mp3" id="5_0wf3g"]
+[ext_resource type="AudioStream" uid="uid://b47ctwhxqewk0" path="res://assets/audio/escada (4).mp3" id="6_5akgj"]
+[ext_resource type="AudioStream" uid="uid://buwk1gip1n0mm" path="res://assets/audio/escada (5).mp3" id="7_yic54"]
+[ext_resource type="AudioStream" uid="uid://1fgfmd3ds1rw" path="res://assets/audio/escada (1).mp3" id="8_n8s7b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_escada"]
+size = Vector2(195, 132)
+
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_0knw5"]
+data = PackedByteArray("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")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2vekm"]
+streams_count = 5
+stream_0/stream = ExtResource("4_d06ix")
+stream_1/stream = ExtResource("5_0wf3g")
+stream_2/stream = ExtResource("6_5akgj")
+stream_3/stream = ExtResource("7_yic54")
+stream_4/stream = SubResource("AudioStreamMP3_0knw5")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3mrqo"]
+random_pitch = 1.2171441
+random_volume_offset_db = 1.77
+streams_count = 4
+stream_0/stream = ExtResource("4_d06ix")
+stream_1/stream = ExtResource("5_0wf3g")
+stream_2/stream = ExtResource("6_5akgj")
+stream_3/stream = ExtResource("7_yic54")
+
+[node name="EscadaBoss" type="CharacterBody2D" unique_id=99529327 node_paths=PackedStringArray("sprite")]
+collision_layer = 4
+script = ExtResource("1_escada")
+vida_maxima = 65.0
+velocidade = 35.0
+sprite = NodePath("Sprite2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=779226501]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_escada")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1216015042]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("2_gr0d8")
+offset = Vector2(0, -15)
+
+[node name="SpriteMorte" type="Sprite2D" parent="." unique_id=1216015043]
+unique_name_in_owner = true
+visible = false
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("3_yulbw")
+offset = Vector2(0, -15)
+
+[node name="TimerSpawn" type="Timer" parent="." unique_id=124930370]
+unique_name_in_owner = true
+wait_time = 3.0
+autostart = true
+
+[node name="PontoSpawn" type="Marker2D" parent="." unique_id=728498643]
+unique_name_in_owner = true
+position = Vector2(0, 72)
+
+[node name="SomSpawn" type="AudioStreamPlayer2D" parent="." unique_id=728498644]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_2vekm")
+
+[node name="SomMovimento" type="AudioStreamPlayer2D" parent="." unique_id=728498645]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_3mrqo")
+
+[node name="SomMorte" type="AudioStreamPlayer2D" parent="." unique_id=728498646]
+unique_name_in_owner = true
+stream = ExtResource("8_n8s7b")
+
+[connection signal="timeout" from="TimerSpawn" to="." method="spawnar_inimigo"]
