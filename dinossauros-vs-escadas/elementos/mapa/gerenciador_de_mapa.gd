@@ -23,13 +23,13 @@ func _ready():
 		porta.trocar_sala.connect(trocar_sala)
 
 func trocar_sala(porta:Porta) -> void:
-	var sala_alvo = porta.owner
-	print(sala_alvo)
+	print(porta)
+	var sala_alvo: Sala = porta.sala
 	jogador.set_physics_process(false)
 	var tween = create_tween().tween_property(camera, "global_position", sala_alvo.global_position, 2.0)
 	await tween.finished
 	sala_alvo.entrar_na_sala()
 	jogador.set_physics_process(true)
 	
-	jogador.position = porta.get_posicao_sair()
+	jogador.global_position = porta.get_posicao_sair()
 	sala_alvo.process_mode = Node.PROCESS_MODE_PAUSABLE

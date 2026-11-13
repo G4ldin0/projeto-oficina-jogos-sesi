@@ -10,9 +10,11 @@ size = Vector2(68, 95)
 radius = 300.0
 
 [node name="Esqueleto" type="CharacterBody2D" unique_id=1238029976 node_paths=PackedStringArray("sprite")]
+collision_layer = 6
 script = ExtResource("1_hg6rv")
+vida_maxima = 4.0
 velocidade = 50.0
-dano = 2.0
+dano = 1.0
 sprite = NodePath("Sprite2D")
 metadata/_custom_type_script = "uid://c3cudtcrxycnb"
 

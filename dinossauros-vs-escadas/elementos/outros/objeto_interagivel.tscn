@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://heupaq44j2pd"]
+
+[ext_resource type="Script" uid="uid://7osth0tqo6da" path="res://elementos/outros/objeto_interagivel.gd" id="1_interacao"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interacao"]
+radius = 90.0
+
+[node name="ObjetoInteragivel" type="Area2D" unique_id=124178594]
+script = ExtResource("1_interacao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2005739757]
+shape = SubResource("CircleShape2D_interacao")
+
+[node name="TextoInteracao" type="Label" parent="." unique_id=119680538]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+offset_left = -180.0
+offset_top = -110.0
+offset_right = 180.0
+offset_bottom = -55.0
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

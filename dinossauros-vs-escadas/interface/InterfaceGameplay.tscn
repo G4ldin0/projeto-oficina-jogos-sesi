@@ -19,7 +19,7 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t88pq"]
 bg_color = Color(0.70980394, 0, 0, 1)
 
-[node name="InterfaceGameplay" type="Control" unique_id=301800598 node_paths=PackedStringArray("sprite", "barra_vida", "barra_vida_label", "cooldown_mordida", "cooldown_arranhao")]
+[node name="InterfaceGameplay" type="Control" unique_id=301800598 node_paths=PackedStringArray("sprite", "barra_vida", "barra_vida_label", "cooldown_mordida", "cooldown_arranhao", "boss_hud", "nome_boss", "barra_vida_boss", "barra_vida_boss_label", "quantidade_bombas", "quantidade_moedas")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,6 +32,12 @@ barra_vida = NodePath("vida/VBoxContainer/barraVida/barraCor")
 barra_vida_label = NodePath("vida/VBoxContainer/barraVida/barraVidaLabel")
 cooldown_mordida = NodePath("HBoxContainer/VBoxContainer2/cooldownMordida")
 cooldown_arranhao = NodePath("HBoxContainer/VBoxContainer2/cooldownArranhao")
+boss_hud = NodePath("BossHUD")
+nome_boss = NodePath("BossHUD/Container/NomeBoss")
+barra_vida_boss = NodePath("BossHUD/Container/BarraVidaBoss")
+barra_vida_boss_label = NodePath("BossHUD/Container/BarraVidaBoss/BarraVidaBossLabel")
+quantidade_bombas = NodePath("VBoxContainer/HBoxContainer3/quantidadeBombas")
+quantidade_moedas = NodePath("VBoxContainer/HBoxContainer2/quantidadeMoedas")
 
 [node name="BossHUD" type="Control" parent="." unique_id=301800599]
 unique_name_in_owner = true
@@ -254,6 +260,7 @@ size_flags_vertical = 3
 alignment = 2
 
 [node name="quantidadeMoedas" type="Label" parent="VBoxContainer/HBoxContainer2" unique_id=1400416284]
+unique_name_in_owner = true
 layout_mode = 2
 text = "x"
 horizontal_alignment = 2
@@ -281,6 +288,7 @@ size_flags_vertical = 3
 alignment = 2
 
 [node name="quantidadeBombas" type="Label" parent="VBoxContainer/HBoxContainer3" unique_id=351682204]
+unique_name_in_owner = true
 layout_mode = 2
 text = "x"
 horizontal_alignment = 2

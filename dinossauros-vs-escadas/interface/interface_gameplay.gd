@@ -1,4 +1,5 @@
-extends Control
+class_name InterfaceGameplay
+extends Interface
 
 @export var player_ref:Player = null
 
@@ -8,10 +9,12 @@ extends Control
 @export var cooldown_mordida: TextureProgressBar
 @export var cooldown_arranhao: TextureProgressBar
 
-@onready var boss_hud: Control = %BossHUD
-@onready var nome_boss: Label = %NomeBoss
-@onready var barra_vida_boss: ProgressBar = %BarraVidaBoss
-@onready var barra_vida_boss_label: Label = %BarraVidaBossLabel
+@export var boss_hud: Control
+@export var nome_boss: Label
+@export var barra_vida_boss: ProgressBar
+@export var barra_vida_boss_label: Label
+@export var quantidade_bombas: Label
+@export var quantidade_moedas: Label
 
 var boss_atual: Inimigo
 
@@ -24,6 +27,22 @@ func _ready() -> void:
 	player_ref.vida_alterada.connect(_ui_dano)
 	cooldown_arranhao.max_value = player_ref.timer_arranhao.wait_time
 	cooldown_mordida.max_value = player_ref.timer_mordida.wait_time
+	_atualizar_quantidade_bombas(player_ref.componente_inventario.bombas)
+	_atualizar_quantidade_moedas(player_ref.componente_inventario.moedas)
+	player_ref.componente_inventario.recurso_alterado.connect(_atualizar_recurso)
+
+func _atualizar_quantidade_bombas(quantidade: int) -> void:
+	quantidade_bombas.text = str(quantidade)
+
+func _atualizar_quantidade_moedas(quantidade: int) -> void:
+	quantidade_moedas.text = str(quantidade)
+
+func _atualizar_recurso(nome_recurso: StringName, quantidade: int) -> void:
+	match nome_recurso:
+		&"bombas":
+			_atualizar_quantidade_bombas(quantidade)
+		&"moedas":
+			_atualizar_quantidade_moedas(quantidade)
 
 func mostrar_boss(boss: Inimigo, nome: String) -> void:
 	if is_instance_valid(boss_atual):

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ca3ro6gu2ddqy" path="res://elementos/projeteis/Projetil.tscn" id="1_j6csd"]
 [ext_resource type="Texture2D" uid="uid://clxn23qo1lopk" path="res://assets/sprites/spritesheet.png" id="1_ocfp7"]
 [ext_resource type="Texture2D" uid="uid://dv171ayrapdnu" path="res://assets/sprites/explosao.png" id="4_kg5wm"]
+[ext_resource type="AudioStream" uid="uid://j2nnglmfm71j" path="res://assets/audio/trovao.wav" id="5_npkwu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6cxqi"]
 radius = 169.00296
@@ -141,6 +142,7 @@ region_rect = Rect2(47, 1246, 368, 367)
 
 [node name="areaBomba" type="Area2D" parent="." index="3" unique_id=75491737]
 collision_layer = 0
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="areaBomba" index="0" unique_id=1481915796]
 shape = SubResource("CircleShape2D_6cxqi")
@@ -152,3 +154,6 @@ scale = Vector2(7.28, 7.28)
 sprite_frames = SubResource("SpriteFrames_6cxqi")
 frame = 1
 speed_scale = 3.0
+
+[node name="Trovao" type="AudioStreamPlayer" parent="areaBomba" index="2" unique_id=1337525508]
+stream = ExtResource("5_npkwu")

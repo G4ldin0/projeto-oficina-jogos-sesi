@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://interface/interface_loja.gd" id="1_loja"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fundo"]
+bg_color = Color(0.03, 0.02, 0.05, 0.94)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.45, 0.15, 0.1, 1)
+
+[node name="InterfaceLoja" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_loja")
+
+[node name="Painel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -180.0
+offset_right = 300.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fundo")
+
+[node name="Conteudo" type="VBoxContainer" parent="Painel"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Titulo" type="Label" parent="Painel/Conteudo"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Loja"
+horizontal_alignment = 1
+
+[node name="Mensagem" type="Label" parent="Painel/Conteudo"]
+layout_mode = 2
+text = "Itens disponíveis:"
+horizontal_alignment = 1
+
+[node name="BotaoCura" type="Button" parent="Painel/Conteudo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Curar 7 de vida (5 moedas)"
+
+[node name="Fechar" type="Button" parent="Painel/Conteudo"]
+layout_mode = 2
+text = "Fechar (Esc)"
+
+[connection signal="pressed" from="Painel/Conteudo/BotaoCura" to="." method="_on_cura_pressed"]
+[connection signal="pressed" from="Painel/Conteudo/Fechar" to="." method="_on_fechar_pressed"]

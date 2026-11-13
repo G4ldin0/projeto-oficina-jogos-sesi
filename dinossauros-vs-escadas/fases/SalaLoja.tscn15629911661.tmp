@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://b3e61f8b5jq51"]
+
+[ext_resource type="PackedScene" uid="uid://kofsva0t2k3q" path="res://fases/Sala01.tscn" id="1_sala"]
+[ext_resource type="Texture2D" uid="uid://clxn23qo1lopk" path="res://assets/sprites/spritesheet.png" id="2_084t2"]
+[ext_resource type="PackedScene" uid="uid://heupaq44j2pd" path="res://elementos/outros/objeto_interagivel.tscn" id="3_interacao"]
+[ext_resource type="PackedScene" uid="uid://bsn76nwnc17tl" path="res://elementos/entidade/jogador.tscn" id="4_m7t7e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vendedor"]
+size = Vector2(117, 85)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e5nn7"]
+radius = 284.00177
+
+[node name="SalaLoja" unique_id=567287454 instance=ExtResource("1_sala")]
+
+[node name="Vendedor" type="RigidBody2D" parent="." index="3" unique_id=2000000001]
+freeze = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Vendedor" index="0" unique_id=2000000002]
+scale = Vector2(0.41, 0.41)
+texture = ExtResource("2_084t2")
+region_enabled = true
+region_rect = Rect2(723.00824, 31.58284, 297.3147, 420.71417)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vendedor" index="1" unique_id=2000000003]
+position = Vector2(-0.5, 43.5)
+shape = SubResource("RectangleShape2D_vendedor")
+
+[node name="ObjetoInteragivel" parent="." index="4" unique_id=1006757408 instance=ExtResource("3_interacao")]
+position = Vector2(-1, 44)
+texto_interacao = "que bom ver você por aqui! aperte E para ver minha loja..."
+
+[node name="CollisionShape2D" parent="ObjetoInteragivel" index="0" unique_id=2005739757]
+shape = SubResource("CircleShape2D_e5nn7")
+
+[node name="TextoInteracao" parent="ObjetoInteragivel" index="1" unique_id=119680538]
+visible = false
+offset_top = -254.0
+offset_bottom = -199.0
+
+[node name="Jogador" parent="." index="5" unique_id=1641892574 instance=ExtResource("4_m7t7e")]
+position = Vector2(-442, -193)
+
+[node name="Camera2D" type="Camera2D" parent="Jogador" index="6" unique_id=879431884]
+
+[editable path="ObjetoInteragivel"]

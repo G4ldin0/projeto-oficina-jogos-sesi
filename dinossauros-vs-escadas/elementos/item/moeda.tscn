@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://elementos/item/moeda.gd" id="1_moeda"]
+[ext_resource type="Texture2D" uid="uid://dr1whbv8pu61b" path="res://assets/sprites/coin.png" id="2_moeda"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_moeda"]
+radius = 18.0
+
+[node name="Moeda" type="Area2D"]
+script = ExtResource("1_moeda")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_moeda")
+scale = Vector2(0.2, 0.2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_moeda")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

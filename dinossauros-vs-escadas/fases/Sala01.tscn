@@ -4,21 +4,6 @@
 [ext_resource type="TileSet" uid="uid://dd5nw681emt84" path="res://assets/recursos/tileset_background.tres" id="2_5cykk"]
 [ext_resource type="PackedScene" uid="uid://cavd2ifc62lpr" path="res://elementos/mapa/porta.tscn" id="3_0kifp"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6cxqi"]
-distance = -307.78
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8vur"]
-normal = Vector2(0, 1)
-distance = -288.73
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_xtmpo"]
-normal = Vector2(1, 0)
-distance = -548.94
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_grxkp"]
-normal = Vector2(-1, 0)
-distance = -601.18
-
 [node name="Sala" type="Node2D" unique_id=1623134922]
 script = ExtResource("1_7bv6p")
 metadata/_custom_type_script = "uid://c8qw2d24hd7eu"
@@ -39,28 +24,13 @@ tile_map_data = PackedByteArray("AADv//f/AAANAAMAAADv//j/AAANAAMAAADv//n/AAANAAM
 tile_set = ExtResource("2_5cykk")
 navigation_enabled = false
 
-[node name="debugBordas" type="StaticBody2D" parent="." unique_id=1838888082]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="debugBordas" unique_id=131725422]
-shape = SubResource("WorldBoundaryShape2D_6cxqi")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="debugBordas" unique_id=1203023858]
-shape = SubResource("WorldBoundaryShape2D_w8vur")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="debugBordas" unique_id=657893161]
-shape = SubResource("WorldBoundaryShape2D_xtmpo")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="debugBordas" unique_id=448893935]
-shape = SubResource("WorldBoundaryShape2D_grxkp")
-
 [node name="Inimigos" type="Node2D" parent="." unique_id=1384443739]
 
 [node name="Portas" type="Node2D" parent="." unique_id=840813761]
 
-[node name="porta_superior2" parent="Portas" unique_id=1834440439 instance=ExtResource("3_0kifp")]
+[node name="porta01" parent="Portas" unique_id=1834440439 instance=ExtResource("3_0kifp")]
 position = Vector2(-3, -336)
 
-[node name="porta_direita2" parent="Portas" unique_id=468628239 instance=ExtResource("3_0kifp")]
+[node name="porta02" parent="Portas" unique_id=468628239 instance=ExtResource("3_0kifp")]
 position = Vector2(556, 2)
 direcao_sair = Vector2(-1, 0)

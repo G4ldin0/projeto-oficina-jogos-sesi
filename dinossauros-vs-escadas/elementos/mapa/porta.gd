@@ -39,6 +39,7 @@ func get_posicao_sair() -> Vector2:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and outra_porta:
+		print(self)
 		trocar_sala.emit(outra_porta)
 
 func trocar_acesso_porta(aberto:bool) -> void:

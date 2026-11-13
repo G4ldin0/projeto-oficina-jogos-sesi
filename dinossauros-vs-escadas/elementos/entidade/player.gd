@@ -5,8 +5,7 @@ extends Entidade
 const BOMBA = preload("uid://dextn2ergv60s")
 @onready var timer_arranhao: Timer = $Arranhar/timerArranhao
 @onready var timer_mordida: Timer = $Mordida/timerMordida
-
-signal tomou_dano
+@onready var componente_inventario: ComponenteInventario = $ComponenteInventario
 
 func _ready() -> void:
 	super._ready()
@@ -78,6 +77,14 @@ var ataquesDisponiveis = {
 	"Arranhar" = true,
 	"Mordida" = true
 }
+
+#Array de callables(Entidade, Player)
+# TODO: preciso achar um jeito de acessar o efeito mesmo depois de usar o item...
+var efeitosAtaques:Dictionary[String, Array] = {
+	"Arranhar" = [],
+	"Mordida" = []
+}
+
 func arranhar() -> void:
 	if not ataquesDisponiveis["Arranhar"]:
 		return
@@ -112,10 +119,14 @@ func mordida() -> void:
 	ataquesDisponiveis["Mordida"] = true
 
 func jogar_bomba() -> void:
+	if componente_inventario.bombas <= 0:
+		return
+
 	var nova_bomba:Projetil = BOMBA.instantiate()
 	nova_bomba.position = position + direcaoAtual * 100.0
 	nova_bomba.direcao = direcaoAtual
 	get_parent().add_child(nova_bomba)
+	componente_inventario.bombas -= 1
 
 
 func realizar_ataque(nome, area, dano_ataque:float, knockback:float) -> void:
@@ -125,13 +136,23 @@ func realizar_ataque(nome, area, dano_ataque:float, knockback:float) -> void:
 			var direcao = global_position.direction_to(corpo.global_position)
 			corpo.knockback(direcao, knockback)
 			corpo.receber_dano(dano_ataque)
+			for efeito in efeitosAtaques[nome]: #aplica todos os efeitos
+				efeito.call(corpo, self)
 			print("Inimigo atingido por ", nome, " , Dano Entregue:", dano_ataque)
+
+func curar_vida(valor:float) -> void:
+	if valor <= 0: return
+	vida = minf(vida + valor, vida_maxima)
+	vida_alterada.emit(vida, vida_maxima)
+	sprite.self_modulate = Color(0,1,0,0.8)
+	await get_tree().create_timer(0.1).timeout
+	sprite.self_modulate = Color.WHITE
+	print('vida atual = %f' % vida)
+
 
 func receber_dano(valor: float) -> void:
 	super.receber_dano(valor)
-	
-	tomou_dano.emit()
-	
+
 	if vida <= 0:
 		call_deferred("morrer")
 

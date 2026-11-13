@@ -1,6 +1,8 @@
 class_name Inimigo
 extends Entidade
 
+const CENA_MOEDA: PackedScene = preload("res://elementos/item/moeda.tscn")
+
 @onready var jogador = get_tree().get_first_node_in_group("player")
 @onready var podeAtacar = true
 @onready var emKnockBack = false
@@ -71,7 +73,20 @@ func _physics_process(_delta: float) -> void:
 
 func morrer() -> void:
 	morreu.emit()
+	_soltar_moedas()
 	queue_free()
+
+func _soltar_moedas() -> void:
+	var sala := get_parent().get_parent()
+	var quantidade := randi_range(0, 2)
+
+	for indice in quantidade:
+		var moeda := CENA_MOEDA.instantiate() as Moeda
+		sala.add_child(moeda)
+		moeda.global_position = global_position + Vector2(
+			randf_range(-20.0, 20.0),
+			randf_range(-20.0, 20.0)
+		)
 	
 
 func receber_dano(valor: float) -> void:
