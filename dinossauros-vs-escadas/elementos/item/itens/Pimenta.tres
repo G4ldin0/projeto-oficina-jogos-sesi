@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://sstbl5gwvuo0"]
+
+[ext_resource type="Script" uid="uid://css75dt2dv4ko" path="res://elementos/item/efeitos/efeito_item.gd" id="1_gebs6"]
+[ext_resource type="Script" uid="uid://dhu0a66hntf5f" path="res://elementos/item/Item.gd" id="2_16kth"]
+[ext_resource type="Script" uid="uid://ba5632t1frcnb" path="res://elementos/item/efeitos/efeito_dano_dot.gd" id="2_fj6dw"]
+[ext_resource type="Script" uid="uid://b3aib2uhnl8ba" path="res://elementos/item/efeitos/efeito_cor.gd" id="3_0vut4"]
+[ext_resource type="Texture2D" uid="uid://clxn23qo1lopk" path="res://assets/sprites/spritesheet.png" id="4_0vut4"]
+
+[sub_resource type="Resource" id="Resource_16kth"]
+script = ExtResource("2_fj6dw")
+ataque = &"Arranhar"
+dano_por_tick = 2.0
+quantidade_ticks = 5
+metadata/_custom_type_script = "uid://ba5632t1frcnb"
+
+[sub_resource type="Resource" id="Resource_wwbxm"]
+script = ExtResource("3_0vut4")
+cor = Color(0.9411765, 0.5686275, 0, 0.73333335)
+metadata/_custom_type_script = "uid://b3aib2uhnl8ba"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gebs6"]
+atlas = ExtResource("4_0vut4")
+region = Rect2(1427.4746, 722.59424, 190.33325, 247.56616)
+
+[resource]
+script = ExtResource("2_16kth")
+nome = "Pimenta"
+sprite = SubResource("AtlasTexture_gebs6")
+efeitos = Array[ExtResource("1_gebs6")]([SubResource("Resource_16kth"), SubResource("Resource_wwbxm")])
+metadata/_custom_type_script = "uid://dhu0a66hntf5f"

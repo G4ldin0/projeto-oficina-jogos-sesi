@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dntijkw86ccgi"]
+
+[ext_resource type="Script" uid="uid://css75dt2dv4ko" path="res://elementos/item/efeitos/efeito_item.gd" id="1_qwd7m"]
+[ext_resource type="Script" uid="uid://dhu0a66hntf5f" path="res://elementos/item/Item.gd" id="2_1ola5"]
+[ext_resource type="Script" uid="uid://bngwx0jjolkl3" path="res://elementos/item/efeitos/efeito_cura.gd" id="2_r6wng"]
+[ext_resource type="Script" uid="uid://ba5632t1frcnb" path="res://elementos/item/efeitos/efeito_dano_dot.gd" id="3_m07qh"]
+[ext_resource type="Script" uid="uid://b3aib2uhnl8ba" path="res://elementos/item/efeitos/efeito_cor.gd" id="4_m07qh"]
+[ext_resource type="Texture2D" uid="uid://clxn23qo1lopk" path="res://assets/sprites/spritesheet.png" id="5_b7xuk"]
+
+[sub_resource type="Resource" id="Resource_r6wng"]
+script = ExtResource("2_r6wng")
+quantidade = 3.0
+metadata/_custom_type_script = "uid://bngwx0jjolkl3"
+
+[sub_resource type="Resource" id="Resource_m07qh"]
+script = ExtResource("3_m07qh")
+ataque = &"Arranhar"
+metadata/_custom_type_script = "uid://ba5632t1frcnb"
+
+[sub_resource type="Resource" id="Resource_yx171"]
+script = ExtResource("4_m07qh")
+cor = Color(0.9411765, 0.9411765, 0, 0.73333335)
+metadata/_custom_type_script = "uid://b3aib2uhnl8ba"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmypc"]
+atlas = ExtResource("5_b7xuk")
+region = Rect2(722.2029, 671.93604, 366.59753, 285.59723)
+
+[resource]
+script = ExtResource("2_1ola5")
+nome = "Carne"
+sprite = SubResource("AtlasTexture_pmypc")
+efeitos = Array[ExtResource("1_qwd7m")]([SubResource("Resource_r6wng"), SubResource("Resource_m07qh"), SubResource("Resource_yx171")])
+metadata/_custom_type_script = "uid://dhu0a66hntf5f"

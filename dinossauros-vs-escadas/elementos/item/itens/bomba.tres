@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" format=3 uid="uid://dcxe7ep5pe8ql"]
+
+[ext_resource type="Script" uid="uid://css75dt2dv4ko" path="res://elementos/item/efeitos/efeito_item.gd" id="1_w78xn"]
+[ext_resource type="Script" uid="uid://dhu0a66hntf5f" path="res://elementos/item/Item.gd" id="2_vqvaw"]
+[ext_resource type="Texture2D" uid="uid://clxn23qo1lopk" path="res://assets/sprites/spritesheet.png" id="3_vqvaw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt8ya"]
+atlas = ExtResource("3_vqvaw")
+region = Rect2(47.000305, 1245, 369.00018, 367.00012)
+
+[resource]
+script = ExtResource("2_vqvaw")
+nome = "bomba"
+sprite = SubResource("AtlasTexture_yt8ya")
+metadata/_custom_type_script = "uid://dhu0a66hntf5f"

@@ -7,7 +7,9 @@ const BOMBA = preload("uid://dextn2ergv60s")
 @onready var timer_mordida: Timer = $Mordida/timerMordida
 @onready var componente_inventario: ComponenteInventario = $ComponenteInventario
 
+
 func _ready() -> void:
+	componente_inventario.add_item(load("res://elementos/item/itens/carne.tres"))
 	super._ready()
 
 
@@ -127,7 +129,6 @@ func jogar_bomba() -> void:
 	nova_bomba.direcao = direcaoAtual
 	get_parent().add_child(nova_bomba)
 	componente_inventario.bombas -= 1
-
 
 func realizar_ataque(nome, area, dano_ataque:float, knockback:float) -> void:
 	var corposNaArea = area.get_overlapping_bodies()
