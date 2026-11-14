@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dpqxahms26c0y"]
+
+[ext_resource type="AudioStream" uid="uid://boiejgk6niru" path="res://assets/audio/musica-do-djabo.mp3" id="1_bq1v2"]
+[ext_resource type="Script" uid="uid://c0od138ffxnyl" path="res://audio_manager.gd" id="2_6jj5d"]
+
+[node name="audioManager" type="AudioStreamPlayer" unique_id=157471573]
+stream = ExtResource("1_bq1v2")
+volume_db = -12.0
+script = ExtResource("2_6jj5d")

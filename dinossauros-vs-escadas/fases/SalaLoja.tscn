@@ -69,5 +69,7 @@ visible = false
 z_index = 2
 offset_top = -254.0
 offset_bottom = -199.0
+theme_override_font_sizes/font_size = 26
+text = "Que bom ver você aqui... aperte E para ver o que tenho!"
 
 [editable path="ObjetoInteragivel"]

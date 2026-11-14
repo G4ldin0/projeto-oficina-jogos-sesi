@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cifsbr88fc0co" path="res://fases/Sala04.tscn" id="1_sala"]
 [ext_resource type="Script" uid="uid://cnsi1ftbbdjaa" path="res://fases/sala_reliquia.gd" id="2_script"]
 [ext_resource type="PackedScene" uid="uid://cavd2ifc62lpr" path="res://elementos/mapa/porta.tscn" id="3_porta"]
-[ext_resource type="PackedScene" path="res://elementos/item/pedestal_reliquia.tscn" id="4_pedestal"]
+[ext_resource type="PackedScene" uid="uid://bpcw4abhibyil" path="res://elementos/item/pedestal_reliquia.tscn" id="4_pedestal"]
 
 [node name="SalaReliquia" unique_id=896895970 instance=ExtResource("1_sala")]
 script = ExtResource("2_script")
@@ -13,3 +13,11 @@ position = Vector2(-564, -19)
 direcao_sair = Vector2(-1, 0)
 
 [node name="PedestalReliquia" parent="." index="3" unique_id=775533518 instance=ExtResource("4_pedestal")]
+
+[node name="TextoInteracao" parent="PedestalReliquia" index="5" unique_id=119680538]
+offset_left = -179.0
+offset_top = 101.0
+offset_right = 181.0
+offset_bottom = 156.0
+
+[editable path="PedestalReliquia"]

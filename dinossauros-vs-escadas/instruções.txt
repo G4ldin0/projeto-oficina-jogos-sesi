@@ -1,0 +1,6 @@
+- Baixe os dois arquivos (.exe e .pck)
+- Guarde-os na mesma pasta
+- Execute o .exe
+
+Jogo funciona com teclado e teclado + mouse
+Instruções de controles dentro do jogo.

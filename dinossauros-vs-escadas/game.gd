@@ -32,6 +32,7 @@ func _ready() -> void:
 	interface_loja.item_compra_solicitada.connect(comprar_item)
 	escada_boss.objeto_fim_criado.connect(_conectar_fim_de_jogo)
 	escada_boss.morreu.connect(_silenciar_musica)
+	AudioStreamPlayer2d.tocar_musica_inicial()
 
 func _conectar_fim_de_jogo(objeto: ObjetoInteragivel) -> void:
 	objeto.interagido.connect(_ir_para_tela_final)

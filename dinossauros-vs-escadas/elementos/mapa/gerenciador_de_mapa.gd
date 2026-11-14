@@ -33,7 +33,6 @@ func definir_camera_acompanha_jogador(acompanhar: bool) -> void:
 		camera.global_position = jogador.global_position
 
 func trocar_sala(porta:Porta) -> void:
-	print(porta)
 	var sala_alvo: Sala = porta.sala
 	definir_camera_acompanha_jogador(false)
 	jogador.set_physics_process(false)

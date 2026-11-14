@@ -15,12 +15,40 @@
 [ext_resource type="PackedScene" uid="uid://bt5wwutb8on12" path="res://elementos/entidade/inimigos/Esqueleto.tscn" id="10_lvtmh"]
 [ext_resource type="PackedScene" uid="uid://ud70jedfkl8j" path="res://elementos/entidade/inimigos/inimigo.tscn" id="10_yyih5"]
 
+[sub_resource type="GDScript" id="GDScript_5rwky"]
+resource_name = "sala_infinita"
+script/source = "extends Sala
+
+const CENA_DIABRETE: PackedScene = preload(\"res://elementos/entidade/inimigos/inimigo.tscn\")
+const CENA_ESQUELETO: PackedScene = preload(\"res://elementos/entidade/inimigos/Esqueleto.tscn\")
+
+@export var min_inimigos:int = 3
+@export var max_inimigos:int = 6
+
+func entrar_na_sala() -> void:
+	if $Inimigos.get_children().size() > 0:
+		for inimigo:Node2D in $Inimigos:
+			inimigo.queue_free()
+
+	var quantidade := randi_range(min_inimigos, max_inimigos)
+	for indice in quantidade:
+		var cena_inimigo := CENA_ESQUELETO if randi_range(0, 1) == 0 else CENA_DIABRETE
+		var inimigo := cena_inimigo.instantiate() as Inimigo
+		$Inimigos.add_child(inimigo)
+		inimigo.position = Vector2(
+			randf_range(-400.0, 400.0),
+			randf_range(-180.0, 180.0)
+		)
+
+	super.entrar_na_sala()
+"
+
 [node name="Game" type="Node" unique_id=894360986]
 script = ExtResource("8_game")
 
 [node name="GerenciadorDeMapa" type="Node2D" parent="." unique_id=1083271187 node_paths=PackedStringArray("sala_inicial")]
 script = ExtResource("2_t88pq")
-sala_inicial = NodePath("salas/Sala")
+sala_inicial = NodePath("salas/SalaLoja")
 
 [node name="Camera2D" type="Camera2D" parent="GerenciadorDeMapa" unique_id=1746413882]
 unique_name_in_owner = true
@@ -85,10 +113,17 @@ direcao_sair = Vector2(1, 0)
 [node name="PedestalReliquia" parent="GerenciadorDeMapa/salas/SalaReliquia" index="3" unique_id=775533518]
 texto_interacao = ""
 
+[node name="TextoInteracao" parent="GerenciadorDeMapa/salas/SalaReliquia/PedestalReliquia" index="5" unique_id=119680538]
+z_index = 2
+offset_left = -174.0
+offset_top = 136.0
+offset_right = 186.0
+offset_bottom = 191.0
+text = "aperte E para pegar a relíquia!"
+
 [node name="Sala5" parent="GerenciadorDeMapa/salas" unique_id=1494729981 instance=ExtResource("6_sala04")]
 position = Vector2(3429, 3121)
-min_inimigos = 4
-max_inimigos = 9
+script = SubResource("GDScript_5rwky")
 
 [node name="Porta" parent="GerenciadorDeMapa/salas/Sala5/Portas" parent_id_path=PackedInt32Array(1494729981, 840813761) index="0" unique_id=1834440439 node_paths=PackedStringArray("outra_porta")]
 outra_porta = NodePath("../../../SalaReliquia/Portas/Porta3")
@@ -157,6 +192,7 @@ mouse_filter = 1
 [editable path="GerenciadorDeMapa/salas/Sala3"]
 [editable path="GerenciadorDeMapa/salas/Sala4"]
 [editable path="GerenciadorDeMapa/salas/SalaReliquia"]
+[editable path="GerenciadorDeMapa/salas/SalaReliquia/PedestalReliquia"]
 [editable path="GerenciadorDeMapa/salas/Sala5"]
 [editable path="GerenciadorDeMapa/salas/SalaLoja"]
 [editable path="GerenciadorDeMapa/salas/SalaLoja/ObjetoInteragivel"]

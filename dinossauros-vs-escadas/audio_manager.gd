@@ -1,9 +1,9 @@
-extends AudioStreamPlayer2D
+extends AudioStreamPlayer
 
 const MUSICA_INICIAL: AudioStream = preload("res://assets/audio/musica-do-djabo.mp3")
 const MUSICA_BOSS: AudioStream = preload("res://assets/audio/Steel_Haze_(Rusted_Pride).wav")
 const MUSICA_FINAL: AudioStream = preload("res://assets/audio/His_Theme.wav")
-const VOLUME_MINIMO := -30.0
+const VOLUME_MINIMO := -80.0
 const VOLUME_MAXIMO := 0.0
 const PASSO_VOLUME := 3.0
 

@@ -7,7 +7,7 @@ extends Control
 func _ready() -> void:
 	tutorial.visible = false
 	configuracoes.visible = false
-	AudioStreamPlayer2d.play()
+	AudioStreamPlayer2d.tocar_musica_inicial()
 
 func _on_iniciar_pressed() -> void:
 	get_tree().change_scene_to_file("res://Game.tscn")

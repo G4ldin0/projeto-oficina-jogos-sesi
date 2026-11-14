@@ -9,7 +9,6 @@ const BOMBA = preload("uid://dextn2ergv60s")
 
 
 func _ready() -> void:
-	componente_inventario.add_item(load("res://elementos/item/itens/carne.tres"))
 	super._ready()
 
 
@@ -28,24 +27,28 @@ func _physics_process(_delta: float) -> void:
 		$SideBlitz.flip_h = false # Deixa o personagem olhando para a direita, padrão
 		$SideBlitz.visible = true
 		$UpBlitz.visible = false
+		$Arranhar/spriteArranhar.flip_h = false
 		posAtual = Vector2(80,0)
 		rotaAtual = 0
 	elif direcaoAtual == Vector2.LEFT:
 		$SideBlitz.flip_h = true # para a esquerda
 		$SideBlitz.visible = true
 		$UpBlitz.visible = false
+		$Arranhar/spriteArranhar.flip_h = true
 		posAtual = Vector2(-80,0)
 		rotaAtual = 0
 	elif direcaoAtual == Vector2.UP:
 		$UpBlitz.flip_v = false
 		$UpBlitz.visible = true
 		$SideBlitz.visible = false
+		$Arranhar/spriteArranhar.flip_v = false
 		posAtual = Vector2(0,-60)
 		rotaAtual = 90
 	elif direcaoAtual == Vector2.DOWN:
 		$UpBlitz.flip_v = true
 		$UpBlitz.visible = true
 		$SideBlitz.visible = false
+		$Arranhar/spriteArranhar.flip_v = true
 		posAtual = Vector2(0,60)
 		rotaAtual = 90
 	$Arranhar.position = posAtual

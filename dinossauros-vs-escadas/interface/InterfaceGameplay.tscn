@@ -365,6 +365,12 @@ layout_mode = 2
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Label" type="Label" parent="VBoxContainer/ItemSelecionado/ItemSlot" unique_id=636670629]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "Q"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1138980866]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2

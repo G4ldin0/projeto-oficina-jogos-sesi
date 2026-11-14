@@ -12,6 +12,7 @@ const CENA_FIM_INTERAGIVEL: PackedScene = preload("res://elementos/outros/fim_in
 @export var distancia_maxima: float = 300.0
 
 var inimigos_spawnados: Array[Entidade] = []
+var maximo_inimigos:int = 6
 var fim_interagivel_criado := false
 
 @onready var sprite_morte: Sprite2D = %SpriteMorte
@@ -79,6 +80,9 @@ func _criar_fim_interagivel() -> void:
 
 func spawnar_inimigo() -> void:
 	_limpar_inimigos_inativos()
+
+	if inimigos_spawnados.size() >= maximo_inimigos:
+		return
 
 	var cena_inimigo: PackedScene = CENA_ESQUELETO if primeiro_esqueleto else CENA_DIABRETE
 	primeiro_esqueleto = not primeiro_esqueleto
