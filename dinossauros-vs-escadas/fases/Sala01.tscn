@@ -28,9 +28,6 @@ navigation_enabled = false
 
 [node name="Portas" type="Node2D" parent="." unique_id=840813761]
 
-[node name="porta01" parent="Portas" unique_id=1834440439 instance=ExtResource("3_0kifp")]
-position = Vector2(-3, -336)
-
-[node name="porta02" parent="Portas" unique_id=468628239 instance=ExtResource("3_0kifp")]
+[node name="porta" parent="Portas" unique_id=468628239 instance=ExtResource("3_0kifp")]
 position = Vector2(556, 2)
 direcao_sair = Vector2(-1, 0)

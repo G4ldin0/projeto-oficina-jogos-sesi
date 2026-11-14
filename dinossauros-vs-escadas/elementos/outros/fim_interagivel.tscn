@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://d1ssxxf7afmjy"]
+
+[ext_resource type="Script" uid="uid://7osth0tqo6da" path="res://elementos/outros/objeto_interagivel.gd" id="1_script"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interacao"]
+radius = 90.0
+
+[node name="FimInteragivel" type="Area2D" unique_id=1417689868]
+script = ExtResource("1_script")
+texto_interacao = "Pressione E para continuar"
+
+[node name="Portal" type="Polygon2D" parent="." unique_id=1469260158]
+color = Color(0.65, 0.12, 0.55, 1)
+polygon = PackedVector2Array(0, -55, 35, -35, 48, 0, 35, 35, 0, 55, -35, 35, -48, 0, -35, -35)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1331578325]
+shape = SubResource("CircleShape2D_interacao")
+
+[node name="TextoInteracao" type="Label" parent="." unique_id=888465056]
+unique_name_in_owner = true
+offset_left = -180.0
+offset_top = -110.0
+offset_right = 180.0
+offset_bottom = -55.0
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

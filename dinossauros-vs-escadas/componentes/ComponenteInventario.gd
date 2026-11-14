@@ -5,12 +5,12 @@ signal recurso_alterado(nome_recurso: StringName, quantidade: int)
 signal item_selecionado(item: Item)
 signal reliquias_alteradas(reliquias: Array[Reliquia])
 
-var moedas: int = 50:
+var moedas: int = 0:
 	set(valor):
 		moedas = maxi(valor, 0)
 		recurso_alterado.emit(&"moedas", moedas)
 
-var bombas: int = 10:
+var bombas: int = 3:
 	set(valor):
 		bombas = maxi(valor, 0)
 		recurso_alterado.emit(&"bombas", bombas)
@@ -56,7 +56,11 @@ func obter_item_selecionado() -> Item:
 
 func usar_item() -> Item:
 	if indice_item_selecionado == -1: return null
-	return inventario.pop_at(indice_item_selecionado)
+	var popped_item:Item = inventario.pop_at(indice_item_selecionado)
+	if indice_item_selecionado == inventario.size():
+		indice_item_selecionado -= 1
+	item_selecionado.emit(inventario[indice_item_selecionado])
+	return popped_item
 
 func _unhandled_key_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("usar_item"):

@@ -1,0 +1,60 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://interface/tela_final.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fundo"]
+bg_color = Color(0.035, 0.02, 0.06, 1)
+
+[node name="TelaFinal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Fundo" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fundo")
+
+[node name="Conteudo" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 22
+
+[node name="Mensagem" type="Label" parent="Conteudo"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "o que será que acontecerá com blitz nas próximas camadas do inferno?\ndescubra nos próximos episódios"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="VoltarInicio" type="Button" parent="Conteudo"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 52)
+text = "Voltar ao início"
+
+[node name="Sair" type="Button" parent="Conteudo"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 52)
+text = "Sair"
+
+[connection signal="pressed" from="Conteudo/VoltarInicio" to="." method="_on_voltar_inicio_pressed"]
+[connection signal="pressed" from="Conteudo/Sair" to="." method="_on_sair_pressed"]

@@ -17,10 +17,17 @@ extends Interface
 @export var quantidade_moedas: Label
 @export var item_escolhido: TextureRect
 @export var lista_reliquias: VBoxContainer
+@onready var pause_menu: PanelContainer = %PauseMenu
+@onready var volume_label: Label = %VolumeLabel
 
 var boss_atual: Inimigo
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS
+	pause_menu.process_mode = Node.PROCESS_MODE_ALWAYS
+	pause_menu.mouse_filter = Control.MOUSE_FILTER_STOP
+	pause_menu.visible = false
+	_atualizar_volume()
 	boss_hud.visible = false
 	#preciso colocar isso depois do gerenciador de mapas, que é quem está instanciando o nó do jogador
 	barra_vida.max_value = player_ref.vida_maxima
@@ -36,6 +43,32 @@ func _ready() -> void:
 	player_ref.componente_inventario.reliquias_alteradas.connect(_atualizar_reliquias)
 	_atualizar_item_recurso(player_ref.componente_inventario.obter_item_selecionado())
 	_atualizar_reliquias(player_ref.componente_inventario.obter_reliquias())
+
+func _on_pause_pressed() -> void:
+	pause_menu.visible = true
+	get_tree().paused = true
+
+func _on_continuar_pressed() -> void:
+	get_tree().paused = false
+	pause_menu.visible = false
+
+func _on_aumentar_volume_pressed() -> void:
+	AudioStreamPlayer2d.aumentar_volume()
+	_atualizar_volume()
+
+func _on_diminuir_volume_pressed() -> void:
+	AudioStreamPlayer2d.diminuir_volume()
+	_atualizar_volume()
+
+func _atualizar_volume() -> void:
+	volume_label.text = "Volume: %d%%" % AudioStreamPlayer2d.obter_volume_percentual()
+
+func _on_voltar_inicio_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://interface/tela_inicial.tscn")
+
+func _on_sair_pressed() -> void:
+	get_tree().quit()
 
 func _atualizar_quantidade_bombas(quantidade: int) -> void:
 	quantidade_bombas.text = str(quantidade)

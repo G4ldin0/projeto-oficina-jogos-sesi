@@ -1,14 +1,18 @@
 class_name EscadaBoss
 extends Inimigo
 
+signal objeto_fim_criado(objeto: ObjetoInteragivel)
+
 const CENA_DIABRETE: PackedScene = preload("res://elementos/entidade/inimigos/inimigo.tscn")
 const CENA_ESQUELETO: PackedScene = preload("res://elementos/entidade/inimigos/Esqueleto.tscn")
+const CENA_FIM_INTERAGIVEL: PackedScene = preload("res://elementos/outros/fim_interagivel.tscn")
 
 @export var primeiro_esqueleto:bool = true
 @export var distancia_minima: float = 180.0
 @export var distancia_maxima: float = 300.0
 
 var inimigos_spawnados: Array[Entidade] = []
+var fim_interagivel_criado := false
 
 @onready var sprite_morte: Sprite2D = %SpriteMorte
 @onready var som_spawn: AudioStreamPlayer2D = %SomSpawn
@@ -45,6 +49,7 @@ func estado_atacando() -> void:
 
 func morrer() -> void:
 	morreu.emit()
+	_criar_fim_interagivel()
 
 	som_movimento.stop()
 	if som_morte.stream != null:
@@ -59,6 +64,18 @@ func morrer() -> void:
 	sprite_final.visible = true
 	sprite_final.global_position = global_position
 	queue_free()
+
+func _criar_fim_interagivel() -> void:
+	if fim_interagivel_criado:
+		return
+
+	fim_interagivel_criado = true
+	var fim_interagivel := CENA_FIM_INTERAGIVEL.instantiate()
+	get_parent().add_child(fim_interagivel)
+	fim_interagivel.global_position = global_position
+	var objeto := fim_interagivel as ObjetoInteragivel
+	if objeto != null:
+		objeto_fim_criado.emit(objeto)
 
 func spawnar_inimigo() -> void:
 	_limpar_inimigos_inativos()

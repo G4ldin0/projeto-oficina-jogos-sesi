@@ -1,5 +1,5 @@
 class_name PedestalReliquia
-extends RigidBody2D
+extends ObjetoInteragivel
 
 @export var reliquia: Reliquia:
 	set(valor):
@@ -10,7 +10,8 @@ extends RigidBody2D
 @onready var sprite_reliquia: Sprite2D = $SpriteReliquia
 
 func _ready() -> void:
-	freeze = true
+	super._ready()
+	interagido.connect(_coletar_reliquia)
 	_atualizar_visual()
 
 func definir_reliquia(valor: Reliquia) -> void:
@@ -23,12 +24,8 @@ func _atualizar_visual() -> void:
 	sprite_reliquia.texture = reliquia.sprite if reliquia != null else null
 	sprite_reliquia.visible = reliquia != null and reliquia.sprite != null
 
-func _on_area_interacao_body_entered(body: Node2D) -> void:
-	if not body.is_in_group("player") or reliquia == null:
-		return
-
-	var jogador := body as Player
-	if jogador == null:
+func _coletar_reliquia(jogador: Player) -> void:
+	if reliquia == null:
 		return
 
 	jogador.componente_inventario.add_reliquia(reliquia)

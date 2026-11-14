@@ -5,6 +5,7 @@ extends Node
 @onready var interface_loja: InterfaceLoja = $CanvasLayerLoja/InterfaceLoja
 @onready var loja: ObjetoInteragivel = $GerenciadorDeMapa/salas/SalaLoja/ObjetoInteragivel
 @onready var sala_reliquia: SalaReliquia = $GerenciadorDeMapa/salas/SalaReliquia
+@onready var escada_boss: EscadaBoss = $GerenciadorDeMapa/salas/SalaChefao/Inimigos/EscadaBoss
 
 var loja_aberta := false
 var cura_da_loja_usada := false
@@ -29,6 +30,17 @@ func _ready() -> void:
 	interface_loja.fechar_solicitado.connect(fechar_loja)
 	interface_loja.cura_solicitada.connect(comprar_cura)
 	interface_loja.item_compra_solicitada.connect(comprar_item)
+	escada_boss.objeto_fim_criado.connect(_conectar_fim_de_jogo)
+	escada_boss.morreu.connect(_silenciar_musica)
+
+func _conectar_fim_de_jogo(objeto: ObjetoInteragivel) -> void:
+	objeto.interagido.connect(_ir_para_tela_final)
+
+func _ir_para_tela_final(_jogador: Player) -> void:
+	get_tree().change_scene_to_file("res://interface/tela_final.tscn")
+
+func _silenciar_musica() -> void:
+	AudioStreamPlayer2d.silenciar()
 
 func abrir_loja(_jogador: Player) -> void:
 	if loja_aberta:

@@ -6,11 +6,11 @@
 size = Vector2(100, 70)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_interacao"]
-radius = 90.0
+radius = 182.95
 
-[node name="PedestalReliquia" type="RigidBody2D" unique_id=273062992]
-freeze = true
+[node name="PedestalReliquia" type="Area2D" unique_id=273062992]
 script = ExtResource("1_pedestal")
+texto_interacao = "Pressione E para pegar a relíquia"
 
 [node name="Base" type="Polygon2D" parent="." unique_id=793499531]
 color = Color(0.25, 0.2, 0.28, 1)
@@ -23,12 +23,24 @@ polygon = PackedVector2Array(-38, -20, 38, -20, 30, -35, -30, -35)
 [node name="SpriteReliquia" type="Sprite2D" parent="." unique_id=1609986350]
 position = Vector2(0, -75)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1526066661]
+[node name="ColisaoFisica" type="StaticBody2D" parent="." unique_id=1857364201]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColisaoFisica" unique_id=1526066661]
 shape = SubResource("RectangleShape2D_pedestal")
 
-[node name="AreaInteracao" type="Area2D" parent="." unique_id=1707154243]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaInteracao" unique_id=1024390307]
+[node name="CollisionShapeInteracao" type="CollisionShape2D" parent="." unique_id=1024390307]
 shape = SubResource("CircleShape2D_interacao")
 
-[connection signal="body_entered" from="AreaInteracao" to="." method="_on_area_interacao_body_entered"]
+[node name="TextoInteracao" type="Label" parent="." unique_id=119680538]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 0)
+offset_left = -180.0
+offset_top = -140.0
+offset_right = 180.0
+offset_bottom = -85.0
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

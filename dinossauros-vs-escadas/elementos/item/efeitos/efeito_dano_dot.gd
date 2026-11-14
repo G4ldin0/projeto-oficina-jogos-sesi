@@ -21,4 +21,5 @@ func aplicar(player: Player) -> void:
 func _aplicar_dano(entidade: Entidade, jogador: Player) -> void:
 	for _indice in quantidade_ticks:
 		await jogador.get_tree().create_timer(intervalo).timeout
-		entidade.receber_dano(dano_por_tick)
+		if is_instance_valid(entidade):
+			entidade.receber_dano(dano_por_tick)

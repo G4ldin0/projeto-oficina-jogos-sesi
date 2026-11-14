@@ -11,7 +11,6 @@ var jogador_na_area: Player
 
 func _ready() -> void:
 	texto.text = texto_interacao
-	interagido.connect(func(args): print('funciona'))
 
 func _unhandled_input(event: InputEvent) -> void:
 	if jogador_na_area == null:

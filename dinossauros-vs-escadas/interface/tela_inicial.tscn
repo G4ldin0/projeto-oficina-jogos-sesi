@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://c18f2chbgc4rc"]
+
+[ext_resource type="Script" uid="uid://etcyulvon87i" path="res://interface/tela_inicial.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fundo"]
+bg_color = Color(0.035, 0.02, 0.06, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_painel"]
+bg_color = Color(0.12, 0.06, 0.16, 0.97)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.55, 0.2, 0.12, 1)
+
+[node name="TelaInicial" type="Control" unique_id=1860697515]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Fundo" type="PanelContainer" parent="." unique_id=1195143060]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fundo")
+
+[node name="Conteudo" type="VBoxContainer" parent="." unique_id=2004950176]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -170.0
+offset_right = 220.0
+offset_bottom = 170.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 18
+
+[node name="Titulo" type="Label" parent="Conteudo" unique_id=2031631222]
+layout_mode = 2
+theme_override_font_sizes/font_size = 34
+text = "DINOSSAUROS VS ESCADAS"
+horizontal_alignment = 1
+
+[node name="Espaco" type="Control" parent="Conteudo" unique_id=56137601]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Iniciar" type="Button" parent="Conteudo" unique_id=1365271020]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+text = "Iniciar"
+
+[node name="TutorialBotao" type="Button" parent="Conteudo" unique_id=551525057]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+text = "Tutorial"
+
+[node name="ConfiguracoesBotao" type="Button" parent="Conteudo" unique_id=551525058]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+text = "Configurações"
+
+[node name="Sair" type="Button" parent="Conteudo" unique_id=360898787]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+text = "Sair"
+
+[node name="Tutorial" type="PanelContainer" parent="." unique_id=1001]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -160.0
+offset_right = 260.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_painel")
+
+[node name="Conteudo" type="VBoxContainer" parent="Tutorial" unique_id=1073197486]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Titulo" type="Label" parent="Tutorial/Conteudo" unique_id=484169967]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Tutorial"
+horizontal_alignment = 1
+
+[node name="Texto" type="Label" parent="Tutorial/Conteudo" unique_id=417695113]
+layout_mode = 2
+text = "Use WASD ou as setas para se movimentar.
+Botão O ou mouse esq. para arranhar e P ou mouse dir. para morder. Botão E para interagir.
+Botão Q para usar item. Botão 1 para item anterior e 2 para posterior."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Fechar" type="Button" parent="Tutorial/Conteudo" unique_id=1305422196]
+layout_mode = 2
+text = "Voltar"
+
+[node name="Configuracoes" type="PanelContainer" parent="." unique_id=1002]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -130.0
+offset_right = 220.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_painel")
+
+[node name="Conteudo" type="VBoxContainer" parent="Configuracoes" unique_id=1003]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Titulo" type="Label" parent="Configuracoes/Conteudo" unique_id=1004]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Configurações"
+horizontal_alignment = 1
+
+[node name="VolumeLabel" type="Label" parent="Configuracoes/Conteudo" unique_id=1005]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="VolumeBotoes" type="HBoxContainer" parent="Configuracoes/Conteudo" unique_id=1006]
+layout_mode = 2
+alignment = 1
+
+[node name="DiminuirVolume" type="Button" parent="Configuracoes/Conteudo/VolumeBotoes" unique_id=1007]
+layout_mode = 2
+text = "Volume -"
+
+[node name="AumentarVolume" type="Button" parent="Configuracoes/Conteudo/VolumeBotoes" unique_id=1008]
+layout_mode = 2
+text = "Volume +"
+
+[node name="Fechar" type="Button" parent="Configuracoes/Conteudo" unique_id=1009]
+layout_mode = 2
+text = "Voltar"
+
+[connection signal="pressed" from="Conteudo/Iniciar" to="." method="_on_iniciar_pressed"]
+[connection signal="pressed" from="Conteudo/TutorialBotao" to="." method="_on_tutorial_pressed"]
+[connection signal="pressed" from="Conteudo/ConfiguracoesBotao" to="." method="_on_configuracoes_pressed"]
+[connection signal="pressed" from="Conteudo/Sair" to="." method="_on_sair_pressed"]
+[connection signal="pressed" from="Tutorial/Conteudo/Fechar" to="." method="_on_fechar_tutorial_pressed"]
+[connection signal="pressed" from="Configuracoes/Conteudo/VolumeBotoes/DiminuirVolume" to="." method="_on_diminuir_volume_pressed"]
+[connection signal="pressed" from="Configuracoes/Conteudo/VolumeBotoes/AumentarVolume" to="." method="_on_aumentar_volume_pressed"]
+[connection signal="pressed" from="Configuracoes/Conteudo/Fechar" to="." method="_on_fechar_configuracoes_pressed"]
