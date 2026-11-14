@@ -1,6 +1,26 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://d0jocjb5eqcxl"]
 
-[ext_resource type="Script" path="res://interface/interface_loja.gd" id="1_loja"]
+[ext_resource type="Script" uid="uid://2n7aip654bk3" path="res://interface/interface_loja.gd" id="1_loja"]
+[ext_resource type="Script" uid="uid://fsmq3hakbbgi" path="res://interface/produto_loja.gd" id="2_produto"]
+[ext_resource type="Resource" uid="uid://dntijkw86ccgi" path="res://elementos/item/itens/carne.tres" id="3_carne"]
+[ext_resource type="Resource" uid="uid://sstbl5gwvuo0" path="res://elementos/item/itens/Pimenta.tres" id="4_pimenta"]
+[ext_resource type="Resource" uid="uid://dcxe7ep5pe8ql" path="res://elementos/item/itens/bomba.tres" id="5_bomba"]
+
+[sub_resource type="Resource" id="ProdutoLoja_carne"]
+script = ExtResource("2_produto")
+item = ExtResource("3_carne")
+preco = 8
+
+[sub_resource type="Resource" id="ProdutoLoja_pimenta"]
+script = ExtResource("2_produto")
+item = ExtResource("4_pimenta")
+preco = 5
+
+[sub_resource type="Resource" id="ProdutoLoja_bomba"]
+script = ExtResource("2_produto")
+item = ExtResource("5_bomba")
+preco = 3
+quantidade_bombas = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fundo"]
 bg_color = Color(0.03, 0.02, 0.05, 0.94)
@@ -10,7 +30,7 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color(0.45, 0.15, 0.1, 1)
 
-[node name="InterfaceLoja" type="Control"]
+[node name="InterfaceLoja" type="Control" unique_id=126850851]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,8 +38,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_loja")
+produtos = Array[ExtResource("2_produto")]([SubResource("ProdutoLoja_carne"), SubResource("ProdutoLoja_pimenta"), SubResource("ProdutoLoja_bomba")])
 
-[node name="Painel" type="PanelContainer" parent="."]
+[node name="Painel" type="PanelContainer" parent="." unique_id=1488760233]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,27 +55,32 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fundo")
 
-[node name="Conteudo" type="VBoxContainer" parent="Painel"]
+[node name="Conteudo" type="VBoxContainer" parent="Painel" unique_id=1396576475]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Titulo" type="Label" parent="Painel/Conteudo"]
+[node name="Titulo" type="Label" parent="Painel/Conteudo" unique_id=1603009033]
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Loja"
 horizontal_alignment = 1
 
-[node name="Mensagem" type="Label" parent="Painel/Conteudo"]
+[node name="Mensagem" type="Label" parent="Painel/Conteudo" unique_id=615740505]
 layout_mode = 2
 text = "Itens disponíveis:"
 horizontal_alignment = 1
 
-[node name="BotaoCura" type="Button" parent="Painel/Conteudo"]
+[node name="ListaProdutos" type="VBoxContainer" parent="Painel/Conteudo" unique_id=274898239]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="BotaoCura" type="Button" parent="Painel/Conteudo" unique_id=392916763]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Curar 7 de vida (5 moedas)"
 
-[node name="Fechar" type="Button" parent="Painel/Conteudo"]
+[node name="Fechar" type="Button" parent="Painel/Conteudo" unique_id=862185791]
 layout_mode = 2
 text = "Fechar (Esc)"
 

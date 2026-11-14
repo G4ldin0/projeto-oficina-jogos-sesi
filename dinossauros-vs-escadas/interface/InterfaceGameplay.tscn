@@ -19,7 +19,19 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t88pq"]
 bg_color = Color(0.70980394, 0, 0, 1)
 
-[node name="InterfaceGameplay" type="Control" unique_id=301800598 node_paths=PackedStringArray("sprite", "barra_vida", "barra_vida_label", "cooldown_mordida", "cooldown_arranhao", "boss_hud", "nome_boss", "barra_vida_boss", "barra_vida_boss_label", "quantidade_bombas", "quantidade_moedas")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_item_slot"]
+bg_color = Color(0.05, 0.03, 0.03, 0.9)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.55, 0.18, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="InterfaceGameplay" type="Control" unique_id=301800598 node_paths=PackedStringArray("sprite", "barra_vida", "barra_vida_label", "cooldown_mordida", "cooldown_arranhao", "boss_hud", "nome_boss", "barra_vida_boss", "barra_vida_boss_label", "quantidade_bombas", "quantidade_moedas", "item_escolhido")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,6 +50,7 @@ barra_vida_boss = NodePath("BossHUD/Container/BarraVidaBoss")
 barra_vida_boss_label = NodePath("BossHUD/Container/BarraVidaBoss/BarraVidaBossLabel")
 quantidade_bombas = NodePath("VBoxContainer/HBoxContainer3/quantidadeBombas")
 quantidade_moedas = NodePath("VBoxContainer/HBoxContainer2/quantidadeMoedas")
+item_escolhido = NodePath("VBoxContainer/ItemSelecionado/ItemSlot/ItemEscolhido")
 
 [node name="BossHUD" type="Control" parent="." unique_id=301800599]
 unique_name_in_owner = true
@@ -253,6 +266,29 @@ grow_horizontal = 0
 grow_vertical = 0
 alignment = 2
 
+[node name="ItemSelecionado" type="VBoxContainer" parent="VBoxContainer" unique_id=1506834778]
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 2
+
+[node name="Titulo" type="Label" parent="VBoxContainer/ItemSelecionado" unique_id=1506834779]
+layout_mode = 2
+text = "Item"
+horizontal_alignment = 1
+
+[node name="ItemSlot" type="PanelContainer" parent="VBoxContainer/ItemSelecionado" unique_id=1506834780]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_item_slot")
+
+[node name="ItemEscolhido" type="TextureRect" parent="VBoxContainer/ItemSelecionado/ItemSlot" unique_id=1506834781]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1138980866]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
@@ -276,7 +312,7 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="spriteBomba" type="Sprite2D" parent="VBoxContainer/HBoxContainer2/Control" unique_id=1725725996]
+[node name="spriteMoeda" type="Sprite2D" parent="VBoxContainer/HBoxContainer2/Control" unique_id=1725725996]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("6_4b2xf")
 region_rect = Rect2(48.557022, 1244.8225, 366.71356, 368.4851)
@@ -309,3 +345,19 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_1fji7")
 region_enabled = true
 region_rect = Rect2(48.557022, 1244.8225, 366.71356, 368.4851)
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3/Control" unique_id=58201412]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "F"
+horizontal_alignment = 1

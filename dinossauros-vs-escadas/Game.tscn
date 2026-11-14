@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cifsbr88fc0co" path="res://fases/Sala04.tscn" id="6_sala04"]
 [ext_resource type="PackedScene" uid="uid://b3e61f8b5jq51" path="res://fases/SalaLoja.tscn" id="7_sala_loja"]
 [ext_resource type="Script" uid="uid://rkuib4kdn1uk" path="res://game.gd" id="8_game"]
-[ext_resource type="PackedScene" path="res://interface/InterfaceLoja.tscn" id="9_interface_loja"]
+[ext_resource type="PackedScene" uid="uid://d0jocjb5eqcxl" path="res://interface/InterfaceLoja.tscn" id="9_interface_loja"]
 
 [node name="Game" type="Node" unique_id=894360986]
 script = ExtResource("8_game")

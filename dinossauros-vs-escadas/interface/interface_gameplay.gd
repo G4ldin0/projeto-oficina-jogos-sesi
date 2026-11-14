@@ -15,6 +15,7 @@ extends Interface
 @export var barra_vida_boss_label: Label
 @export var quantidade_bombas: Label
 @export var quantidade_moedas: Label
+@export var item_escolhido: TextureRect
 
 var boss_atual: Inimigo
 
@@ -30,6 +31,8 @@ func _ready() -> void:
 	_atualizar_quantidade_bombas(player_ref.componente_inventario.bombas)
 	_atualizar_quantidade_moedas(player_ref.componente_inventario.moedas)
 	player_ref.componente_inventario.recurso_alterado.connect(_atualizar_recurso)
+	player_ref.componente_inventario.item_selecionado.connect(_atualizar_item_recurso)
+	_atualizar_item_recurso(player_ref.componente_inventario.obter_item_selecionado())
 
 func _atualizar_quantidade_bombas(quantidade: int) -> void:
 	quantidade_bombas.text = str(quantidade)
@@ -43,6 +46,16 @@ func _atualizar_recurso(nome_recurso: StringName, quantidade: int) -> void:
 			_atualizar_quantidade_bombas(quantidade)
 		&"moedas":
 			_atualizar_quantidade_moedas(quantidade)
+		&"item":
+			_atualizar_item_escolhido(player_ref.componente_inventario.obter_item_selecionado())
+		_: pass
+
+func _atualizar_item_recurso(_item: Item) -> void:
+	_atualizar_recurso(&"item", 0)
+
+func _atualizar_item_escolhido(item: Item) -> void:
+	item_escolhido.texture = item.sprite if item != null else null
+	item_escolhido.visible = item != null
 
 func mostrar_boss(boss: Inimigo, nome: String) -> void:
 	if is_instance_valid(boss_atual):
