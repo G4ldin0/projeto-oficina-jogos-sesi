@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://btv0d8sg0kb2y"]
+
+[ext_resource type="Script" uid="uid://cb8g1ksvt4842" path="res://elementos/entidade/companheiro.gd" id="1_companheiro"]
+[ext_resource type="Texture2D" uid="uid://ce5r2tix24qqp" path="res://assets/sprites/Blitz/pequenos_blitz.png" id="2_sprite"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_companheiro"]
+radius = 18.0
+
+[node name="Companheiro" type="Area2D" unique_id=921961348]
+script = ExtResource("1_companheiro")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1374513309]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("2_sprite")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=447806153]
+shape = SubResource("CircleShape2D_companheiro")

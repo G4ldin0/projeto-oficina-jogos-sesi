@@ -116,6 +116,12 @@ func mordida() -> void:
 	ataquesDisponiveis["Mordida"] = false
 	mordida_sfx.play()
 	realizar_ataque("Mordida", $Mordida, dano, mordidaKnockback)
+	var componente_ovos := get_node_or_null("ComponenteAtirarOvos") as ComponenteAtirarOvos
+	if componente_ovos != null:
+		componente_ovos.atirar(direcaoAtual)
+	var componente_companheiros := get_node_or_null("ComponenteCompanheiros") as ComponenteCompanheiros
+	if componente_companheiros != null:
+		componente_companheiros.atacar(direcaoAtual)
 	timer_mordida.start()
 	await timer_mordida.timeout
 	ataquesDisponiveis["Mordida"] = true

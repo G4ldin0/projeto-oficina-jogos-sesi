@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Reliquia" format=3 uid="uid://um2urx4mkp41"]
+
+[ext_resource type="Script" uid="uid://dad57ddof8obd" path="res://elementos/item/Reliquia.gd" id="1_reliquia"]
+[ext_resource type="Script" uid="uid://j66n50c8388h" path="res://elementos/item/efeitos/efeito_reliquia.gd" id="2_efeito_base"]
+[ext_resource type="Script" uid="uid://lllwf4l8wiwa" path="res://elementos/item/efeitos/efeito_vida_maxima.gd" id="3_efeito_vida"]
+[ext_resource type="Texture2D" uid="uid://c3u8p14ngger5" path="res://assets/sprites/regen_icon.webp" id="4_angdj"]
+
+[sub_resource type="Resource" id="EfeitoVidaMaxima"]
+script = ExtResource("3_efeito_vida")
+
+[resource]
+script = ExtResource("1_reliquia")
+nome = "coração 2"
+sprite = ExtResource("4_angdj")
+efeitos = Array[ExtResource("2_efeito_base")]([SubResource("EfeitoVidaMaxima")])

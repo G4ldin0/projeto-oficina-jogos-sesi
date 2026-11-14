@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Reliquia" format=3 uid="uid://cu54a18h438wo"]
+
+[ext_resource type="Script" uid="uid://dad57ddof8obd" path="res://elementos/item/Reliquia.gd" id="1_reliquia"]
+[ext_resource type="Script" uid="uid://j66n50c8388h" path="res://elementos/item/efeitos/efeito_reliquia.gd" id="2_base"]
+[ext_resource type="Script" uid="uid://cb8e2vf8huvpb" path="res://elementos/item/efeitos/efeito_atirar_ovos.gd" id="3_ovos"]
+[ext_resource type="Texture2D" uid="uid://clxn23qo1lopk" path="res://assets/sprites/spritesheet.png" id="4_ctnd5"]
+
+[sub_resource type="Resource" id="EfeitoAtirarOvos"]
+script = ExtResource("3_ovos")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51vgg"]
+atlas = ExtResource("4_ctnd5")
+region = Rect2(151.4303, 107.97408, 247.5661, 315.4471)
+
+[resource]
+script = ExtResource("1_reliquia")
+nome = "Ovos de Dinossauro"
+sprite = SubResource("AtlasTexture_51vgg")
+efeitos = Array[ExtResource("2_base")]([SubResource("EfeitoAtirarOvos")])

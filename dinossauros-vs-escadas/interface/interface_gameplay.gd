@@ -16,6 +16,7 @@ extends Interface
 @export var quantidade_bombas: Label
 @export var quantidade_moedas: Label
 @export var item_escolhido: TextureRect
+@export var lista_reliquias: VBoxContainer
 
 var boss_atual: Inimigo
 
@@ -32,7 +33,9 @@ func _ready() -> void:
 	_atualizar_quantidade_moedas(player_ref.componente_inventario.moedas)
 	player_ref.componente_inventario.recurso_alterado.connect(_atualizar_recurso)
 	player_ref.componente_inventario.item_selecionado.connect(_atualizar_item_recurso)
+	player_ref.componente_inventario.reliquias_alteradas.connect(_atualizar_reliquias)
 	_atualizar_item_recurso(player_ref.componente_inventario.obter_item_selecionado())
+	_atualizar_reliquias(player_ref.componente_inventario.obter_reliquias())
 
 func _atualizar_quantidade_bombas(quantidade: int) -> void:
 	quantidade_bombas.text = str(quantidade)
@@ -56,6 +59,29 @@ func _atualizar_item_recurso(_item: Item) -> void:
 func _atualizar_item_escolhido(item: Item) -> void:
 	item_escolhido.texture = item.sprite if item != null else null
 	item_escolhido.visible = item != null
+
+func _atualizar_reliquias(reliquias: Array[Reliquia]) -> void:
+	for filho in lista_reliquias.get_children():
+		filho.queue_free()
+
+	lista_reliquias.visible = not reliquias.is_empty()
+	for reliquia in reliquias:
+		var linha := HBoxContainer.new()
+		linha.add_theme_constant_override("separation", 6)
+		lista_reliquias.add_child(linha)
+
+		if reliquia.sprite != null:
+			var icone := TextureRect.new()
+			icone.custom_minimum_size = Vector2(32, 32)
+			icone.texture = reliquia.sprite
+			icone.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+			icone.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+			linha.add_child(icone)
+
+		var nome := Label.new()
+		nome.text = reliquia.nome
+		nome.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		linha.add_child(nome)
 
 func mostrar_boss(boss: Inimigo, nome: String) -> void:
 	if is_instance_valid(boss_atual):

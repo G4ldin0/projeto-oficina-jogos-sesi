@@ -3,6 +3,7 @@ extends Node
 
 signal recurso_alterado(nome_recurso: StringName, quantidade: int)
 signal item_selecionado(item: Item)
+signal reliquias_alteradas(reliquias: Array[Reliquia])
 
 var moedas: int = 50:
 	set(valor):
@@ -13,10 +14,21 @@ var bombas: int = 10:
 	set(valor):
 		bombas = maxi(valor, 0)
 		recurso_alterado.emit(&"bombas", bombas)
-var _reliquias:Array[Item] = []
+var _reliquias: Array[Reliquia] = []
 
 var inventario:Array[Item] = []
 var indice_item_selecionado := -1
+
+func add_reliquia(reliquia: Reliquia) -> void:
+	if reliquia == null or _reliquias.has(reliquia):
+		return
+
+	_reliquias.append(reliquia)
+	reliquia.aplicar(get_parent() as Player)
+	reliquias_alteradas.emit(_reliquias)
+
+func obter_reliquias() -> Array[Reliquia]:
+	return _reliquias
 
 func add_item(item:Item) -> void:
 	inventario.append(item)

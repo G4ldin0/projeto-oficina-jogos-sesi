@@ -3,6 +3,11 @@
 [ext_resource type="Script" uid="uid://c8qw2d24hd7eu" path="res://elementos/mapa/sala.gd" id="1_7bv6p"]
 [ext_resource type="TileSet" uid="uid://dd5nw681emt84" path="res://assets/recursos/tileset_background.tres" id="2_5cykk"]
 [ext_resource type="PackedScene" uid="uid://cavd2ifc62lpr" path="res://elementos/mapa/porta.tscn" id="3_0kifp"]
+[ext_resource type="PackedScene" uid="uid://bpcw4abhibyil" path="res://elementos/item/pedestal_reliquia.tscn" id="4_51vgg"]
+[ext_resource type="Resource" uid="uid://um2urx4mkp41" path="res://elementos/item/reliquias/novo_coracao.tres" id="5_oyw1h"]
+[ext_resource type="Resource" uid="uid://ci4f0dh4bg3ps" path="res://elementos/item/reliquias/botas.tres" id="6_0uy4g"]
+[ext_resource type="Resource" uid="uid://cu54a18h438wo" path="res://elementos/item/reliquias/ovos.tres" id="7_oyw1h"]
+[ext_resource type="Resource" uid="uid://dsubaxm7mbfvf" path="res://elementos/item/reliquias/six_e_seven.tres" id="8_0uy4g"]
 
 [node name="Sala" type="Node2D" unique_id=1623134922]
 script = ExtResource("1_7bv6p")
@@ -34,3 +39,19 @@ position = Vector2(-3, -336)
 [node name="porta02" parent="Portas" unique_id=468628239 instance=ExtResource("3_0kifp")]
 position = Vector2(556, 2)
 direcao_sair = Vector2(-1, 0)
+
+[node name="PedestalReliquia" parent="." unique_id=1970335359 instance=ExtResource("4_51vgg")]
+position = Vector2(222, -6)
+reliquia = ExtResource("5_oyw1h")
+
+[node name="PedestalReliquia2" parent="." unique_id=1267661583 instance=ExtResource("4_51vgg")]
+position = Vector2(230, 211)
+reliquia = ExtResource("6_0uy4g")
+
+[node name="PedestalReliquia3" parent="." unique_id=1446447611 instance=ExtResource("4_51vgg")]
+position = Vector2(234, -181)
+reliquia = ExtResource("7_oyw1h")
+
+[node name="PedestalReliquia4" parent="." unique_id=273062992 instance=ExtResource("4_51vgg")]
+position = Vector2(43, 203)
+reliquia = ExtResource("8_0uy4g")

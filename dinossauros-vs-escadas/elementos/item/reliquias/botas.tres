@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Reliquia" format=3 uid="uid://ci4f0dh4bg3ps"]
+
+[ext_resource type="Script" uid="uid://dad57ddof8obd" path="res://elementos/item/Reliquia.gd" id="1_reliquia"]
+[ext_resource type="Script" uid="uid://j66n50c8388h" path="res://elementos/item/efeitos/efeito_reliquia.gd" id="2_efeito_base"]
+[ext_resource type="Script" uid="uid://1vm7vmamvt13" path="res://elementos/item/efeitos/efeito_velocidade.gd" id="3_efeito_velocidade"]
+[ext_resource type="Texture2D" uid="uid://fyia00x4p144" path="res://assets/sprites/speed_icon.webp" id="4_4mxrn"]
+
+[sub_resource type="Resource" id="EfeitoVelocidade"]
+script = ExtResource("3_efeito_velocidade")
+aumento = 500.0
+
+[resource]
+script = ExtResource("1_reliquia")
+nome = "botas ligeiras"
+sprite = ExtResource("4_4mxrn")
+efeitos = Array[ExtResource("2_efeito_base")]([SubResource("EfeitoVelocidade")])

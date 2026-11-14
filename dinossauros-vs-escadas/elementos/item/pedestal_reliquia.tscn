@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bpcw4abhibyil"]
+
+[ext_resource type="Script" uid="uid://ft4o2tn04jr6" path="res://elementos/item/pedestal.gd" id="1_pedestal"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pedestal"]
+size = Vector2(100, 70)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_interacao"]
+radius = 90.0
+
+[node name="PedestalReliquia" type="RigidBody2D" unique_id=273062992]
+freeze = true
+script = ExtResource("1_pedestal")
+
+[node name="Base" type="Polygon2D" parent="." unique_id=793499531]
+color = Color(0.25, 0.2, 0.28, 1)
+polygon = PackedVector2Array(-50, 35, 50, 35, 38, -20, -38, -20)
+
+[node name="Topo" type="Polygon2D" parent="." unique_id=1948933326]
+color = Color(0.55, 0.4, 0.2, 1)
+polygon = PackedVector2Array(-38, -20, 38, -20, 30, -35, -30, -35)
+
+[node name="SpriteReliquia" type="Sprite2D" parent="." unique_id=1609986350]
+position = Vector2(0, -75)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1526066661]
+shape = SubResource("RectangleShape2D_pedestal")
+
+[node name="AreaInteracao" type="Area2D" parent="." unique_id=1707154243]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaInteracao" unique_id=1024390307]
+shape = SubResource("CircleShape2D_interacao")
+
+[connection signal="body_entered" from="AreaInteracao" to="." method="_on_area_interacao_body_entered"]

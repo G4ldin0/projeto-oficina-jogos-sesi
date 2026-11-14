@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cifsbr88fc0co" path="res://fases/Sala04.tscn" id="6_sala04"]
 [ext_resource type="PackedScene" uid="uid://b3e61f8b5jq51" path="res://fases/SalaLoja.tscn" id="7_sala_loja"]
 [ext_resource type="Script" uid="uid://rkuib4kdn1uk" path="res://game.gd" id="8_game"]
+[ext_resource type="PackedScene" uid="uid://bg5tgj0oc5khk" path="res://fases/SalaReliquia.tscn" id="8_yhmtn"]
 [ext_resource type="PackedScene" uid="uid://d0jocjb5eqcxl" path="res://interface/InterfaceLoja.tscn" id="9_interface_loja"]
 
 [node name="Game" type="Node" unique_id=894360986]
@@ -57,6 +58,9 @@ max_inimigos = 0
 [node name="Porta" parent="GerenciadorDeMapa/salas/Sala4/Portas" parent_id_path=PackedInt32Array(28491236, 840813761) index="0" unique_id=1834440439 node_paths=PackedStringArray("outra_porta")]
 outra_porta = NodePath("../../../Sala2/Portas/PortaSuperior")
 
+[node name="Porta2" parent="GerenciadorDeMapa/salas/Sala4/Portas" parent_id_path=PackedInt32Array(28491236, 840813761) index="1" unique_id=220384129 node_paths=PackedStringArray("outra_porta")]
+outra_porta = NodePath("../../../SalaReliquia/Portas/Porta4")
+
 [node name="Porta3" parent="GerenciadorDeMapa/salas/Sala4/Portas" parent_id_path=PackedInt32Array(28491236, 840813761) index="2" unique_id=1603864082 node_paths=PackedStringArray("outra_porta")]
 outra_porta = NodePath("../../../SalaLoja/Portas/porta01")
 
@@ -71,6 +75,13 @@ position = Vector2(477, -548)
 
 [node name="PortaSuperior" parent="GerenciadorDeMapa/salas/SalaChefao/Portas" parent_id_path=PackedInt32Array(985394824, 525681050) index="0" unique_id=46564048 node_paths=PackedStringArray("outra_porta")]
 outra_porta = NodePath("../../../Sala/Portas/porta01")
+
+[node name="SalaReliquia" parent="GerenciadorDeMapa/salas" unique_id=1299782163 instance=ExtResource("8_yhmtn")]
+position = Vector2(3537, 1199)
+
+[node name="Porta4" parent="GerenciadorDeMapa/salas/SalaReliquia/Portas" parent_id_path=PackedInt32Array(1299782163, 840813761) index="3" unique_id=902845338 node_paths=PackedStringArray("outra_porta")]
+outra_porta = NodePath("../../../Sala4/Portas/Porta2")
+direcao_sair = Vector2(1, 0)
 
 [node name="Jogador" parent="GerenciadorDeMapa" unique_id=1641892574 instance=ExtResource("5_joorw")]
 unique_name_in_owner = true
@@ -92,3 +103,4 @@ player_ref = NodePath("../../GerenciadorDeMapa/Jogador")
 [editable path="GerenciadorDeMapa/salas/SalaLoja"]
 [editable path="GerenciadorDeMapa/salas/SalaLoja/ObjetoInteragivel"]
 [editable path="GerenciadorDeMapa/salas/SalaChefao"]
+[editable path="GerenciadorDeMapa/salas/SalaReliquia"]

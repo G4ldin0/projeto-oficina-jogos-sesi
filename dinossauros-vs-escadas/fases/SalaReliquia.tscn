@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bg5tgj0oc5khk"]
+
+[ext_resource type="PackedScene" uid="uid://cifsbr88fc0co" path="res://fases/Sala04.tscn" id="1_sala"]
+[ext_resource type="Script" uid="uid://cnsi1ftbbdjaa" path="res://fases/sala_reliquia.gd" id="2_script"]
+[ext_resource type="PackedScene" uid="uid://cavd2ifc62lpr" path="res://elementos/mapa/porta.tscn" id="3_porta"]
+[ext_resource type="PackedScene" path="res://elementos/item/pedestal_reliquia.tscn" id="4_pedestal"]
+
+[node name="SalaReliquia" unique_id=896895970 instance=ExtResource("1_sala")]
+script = ExtResource("2_script")
+
+[node name="Porta4" parent="Portas" parent_id_path=PackedInt32Array(840813761) index="3" unique_id=902845338 instance=ExtResource("3_porta")]
+position = Vector2(-564, -19)
+direcao_sair = Vector2(-1, 0)
+
+[node name="PedestalReliquia" parent="." index="3" unique_id=775533518 instance=ExtResource("4_pedestal")]

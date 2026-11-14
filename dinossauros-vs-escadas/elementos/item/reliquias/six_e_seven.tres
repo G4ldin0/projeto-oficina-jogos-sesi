@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Reliquia" format=3 uid="uid://dsubaxm7mbfvf"]
+
+[ext_resource type="Script" uid="uid://dad57ddof8obd" path="res://elementos/item/Reliquia.gd" id="1_reliquia"]
+[ext_resource type="Script" uid="uid://j66n50c8388h" path="res://elementos/item/efeitos/efeito_reliquia.gd" id="2_base"]
+[ext_resource type="Script" uid="uid://dfcr04kcoyxim" path="res://elementos/item/efeitos/efeito_companheiros.gd" id="3_companheiros"]
+[ext_resource type="Texture2D" uid="uid://ce5r2tix24qqp" path="res://assets/sprites/Blitz/pequenos_blitz.png" id="4_g581a"]
+
+[sub_resource type="Resource" id="EfeitoCompanheiros"]
+script = ExtResource("3_companheiros")
+
+[resource]
+script = ExtResource("1_reliquia")
+nome = "Six e Seven"
+sprite = ExtResource("4_g581a")
+efeitos = Array[ExtResource("2_base")]([SubResource("EfeitoCompanheiros")])
