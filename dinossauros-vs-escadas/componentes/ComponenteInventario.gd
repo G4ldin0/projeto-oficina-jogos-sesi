@@ -30,6 +30,9 @@ func add_reliquia(reliquia: Reliquia) -> void:
 func obter_reliquias() -> Array[Reliquia]:
 	return _reliquias
 
+func possui_reliquia(reliquia: Reliquia) -> bool:
+	return _reliquias.has(reliquia)
+
 func add_item(item:Item) -> void:
 	inventario.append(item)
 	if item.get_class() != inventario.back().get_class():

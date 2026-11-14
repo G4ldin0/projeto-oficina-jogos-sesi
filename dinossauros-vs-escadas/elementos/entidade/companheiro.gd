@@ -25,7 +25,6 @@ func investir(direcao: Vector2) -> void:
 
 	atacando = true
 	inimigos_atingidos.clear()
-	rotation = direcao.angle()
 	var destino := offset_acompanhamento + direcao * distancia_investida
 	var tween := create_tween()
 	tween.tween_property(self, "position", destino, duracao_investida * 0.5)

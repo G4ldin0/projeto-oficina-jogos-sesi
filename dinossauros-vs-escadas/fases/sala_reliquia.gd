@@ -1,18 +1,15 @@
 class_name SalaReliquia
 extends Sala
 
-const RELIQUIAS: Array[Reliquia] = [
-	preload("res://elementos/item/reliquias/novo_coracao.tres"),
-	preload("res://elementos/item/reliquias/botas.tres"),
-	preload("res://elementos/item/reliquias/ovos.tres"),
-	preload("res://elementos/item/reliquias/six_e_seven.tres")
-]
-
 @onready var pedestal: PedestalReliquia = $PedestalReliquia
+var reliquia_disponivel: Reliquia
+
+func definir_reliquia(reliquia: Reliquia) -> void:
+	reliquia_disponivel = reliquia
+	if is_node_ready():
+		pedestal.definir_reliquia(reliquia)
 
 func entrar_na_sala() -> void:
-	if sala_iniciada:
-		return
-
-	pedestal.definir_reliquia(RELIQUIAS.pick_random())
-	super.entrar_na_sala()
+	if not sala_iniciada:
+		pedestal.definir_reliquia(reliquia_disponivel)
+		super.entrar_na_sala()

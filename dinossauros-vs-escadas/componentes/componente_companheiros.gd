@@ -19,9 +19,25 @@ func _ready() -> void:
 		companheiro.dano = dano
 		companheiro.distancia_investida = distancia_investida
 		companheiro.duracao_investida = duracao_investida
-		companheiro.offset_acompanhamento = Vector2(-42, -28) if indice == 0 else Vector2(-42, 28)
 		add_child.call_deferred(companheiro)
 		companheiros.append(companheiro)
+
+func _process(_delta: float) -> void:
+	var jogador := get_parent() as Player
+	if jogador == null:
+		return
+
+	var direcao := jogador.direcaoAtual.normalized()
+	if direcao == Vector2.ZERO:
+		return
+
+	var lateral := Vector2(-direcao.y, direcao.x) * 42.0
+	for companheiro in companheiros:
+		if companheiro.atacando:
+			continue
+
+		var indice := companheiros.find(companheiro)
+		companheiro.offset_acompanhamento = lateral if indice == 0 else -lateral
 
 func atacar(direcao: Vector2) -> void:
 	if direcao == Vector2.ZERO or companheiros.is_empty():

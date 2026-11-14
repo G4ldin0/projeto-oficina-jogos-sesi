@@ -50,7 +50,7 @@ anchor_bottom = 0.5
 offset_left = -300.0
 offset_top = -180.0
 offset_right = 300.0
-offset_bottom = 180.0
+offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fundo")
@@ -71,6 +71,16 @@ text = "Itens disponíveis:"
 horizontal_alignment = 1
 
 [node name="ListaProdutos" type="VBoxContainer" parent="Painel/Conteudo" unique_id=274898239]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TituloReliquia" type="Label" parent="Painel/Conteudo" unique_id=1732050808]
+layout_mode = 2
+text = "Relíquia disponível:"
+horizontal_alignment = 1
+
+[node name="ListaReliquia" type="VBoxContainer" parent="Painel/Conteudo" unique_id=397614582]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 8
